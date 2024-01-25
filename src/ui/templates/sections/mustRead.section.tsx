@@ -1,13 +1,15 @@
-import ArticleCardPrimary from "../../molecules/articleCardPrimary.molecule";
+import HeadingSection from "../../molecules/headingSection.molecule";
 import ArticleInfo from "../../../data/mock/Article.mock.json";
+import ArticleCardMid from "../../molecules/articleCardMid.molecule";
 import ArticleCardSmall from "../../molecules/articleCardSmall.molecule";
 
-const HomeSection = () => {
+const MustReadSection = () => {
   const SmallArticlesList = () => (
     <ul className="grid gap-4 content-between">
-      {[ArticleInfo, ArticleInfo, ArticleInfo, ArticleInfo].map((data, index) => (
+      {[ArticleInfo, ArticleInfo, ArticleInfo].map((data, index) => (
         <li key={index} className="h-fit">
           <ArticleCardSmall
+            className="md:grid-cols-[1fr,1fr]"
             data={{
               ...data.attributes,
               cover: "https://fastly.picsum.photos/id/586/536/354.jpg?hmac=P7VlXEEnfksFtsPAdPrNzb5pPU0QKTGK8d2z_aFuH80",
@@ -20,10 +22,10 @@ const HomeSection = () => {
   );
 
   return (
-    <div className="max-w-screen-2xl md:pb-40 sm:mx-auto my-0">
+    <div className="my-8 mx-auto max-w-screen-2xl">
+      <HeadingSection title={"Must Read"} href={"#"} className="px-4 mb-8" />
       <div className="grid gap-6 xl:grid-cols-[55%,40%] justify-evenly">
-        {/* <NewsTicker data={NewsTrikerInfo.updates}/> */}
-        <ArticleCardPrimary
+        <ArticleCardMid
           data={{
             ...ArticleInfo.attributes,
             description:
@@ -31,12 +33,12 @@ const HomeSection = () => {
             cover: "https://fastly.picsum.photos/id/586/536/354.jpg?hmac=P7VlXEEnfksFtsPAdPrNzb5pPU0QKTGK8d2z_aFuH80",
             href: "#",
           }}
+          includesREADMORE={false}
         />
-
         <SmallArticlesList />
       </div>
     </div>
   );
 };
 
-export default HomeSection;
+export default MustReadSection;

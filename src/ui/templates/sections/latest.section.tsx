@@ -13,7 +13,7 @@ const LatestSection = () => {
               description:
                 "Hundreds of thousands of people have been left without access to normal drinking water since the breach of the Kakhovka dam, Ukranine's President Volodymyr Zelensky has said.",
               cover: "https://fastly.picsum.photos/id/586/536/354.jpg?hmac=P7VlXEEnfksFtsPAdPrNzb5pPU0QKTGK8d2z_aFuH80",
-              article_url: "#",
+              href: "#",
             }}
           />
         </li>
@@ -22,7 +22,7 @@ const LatestSection = () => {
   );
 
   return (
-    <div className="my-0 mx-auto max-w-screen-2xl">
+    <div className="my-8 mx-auto max-w-screen-2xl">
       <HeadingSection title={"Latest news"} href={"#"} className="px-4 mb-8" />
       <MidArticlesList />
     </div>

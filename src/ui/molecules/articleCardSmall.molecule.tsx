@@ -11,16 +11,16 @@ type Article = {
   category: string;
   readingTime: number;
   publishedAt: string;
-  article_url: string;
+  href: string;
 };
 
-interface ArticleCardSmallProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ArticleCardSmallProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   data: Article;
 }
 
-const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, ...props }) => {
+const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, className = "", ...props }) => {
   const ArticleDetails = () => (
-    <div className="w-full h-fit sm:h-full p-4 bg-opacity-60 grid gap-2 md:px-6 xl:pr-0 xl:py-0 ">
+    <div className="w-full h-fit sm:h-full p-4 bg-opacity-60 grid gap-2 md:px-6 xl:pr-0 xl:py-0 items-center">
       <div className="flex justify-between items-center w-fit">
         <Phrase color="body-400" weight="font-semibold">
           {formatDate(data.publishedAt)}
@@ -28,7 +28,7 @@ const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, ...props }) =
         <DotIcon className="mx-2 h-[4px] w-[4px] bg-body-400" />
         <Phrase color="body-400">{timeSince(data.publishedAt)}</Phrase>
       </div>
-      <Body color="body-900" weight="font-bold">
+      <Body color="body-900" weight="font-bold" className="group-hover:text-blueberry-600">
         {data.title}
       </Body>
       <div className="flex justify-between items-center w-fit">
@@ -42,11 +42,11 @@ const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, ...props }) =
   );
 
   return (
-    <div {...props} className="grid grid-rows-[70%,30%] sm:grid-cols-[30%,65%]">
+    <a href={data.href} {...props} className={`grid grid-rows-[70%,30%] sm:grid-cols-[30%,70%] group sm:w-fit ${className}`}>
       <img src={data.cover} alt={data.cover} className="w-full h-full max-h-40 sm:rounded-tr-lg sm:rounded-br-lg md:rounded-lg object-cover" />
 
       <ArticleDetails />
-    </div>
+    </a>
   );
 };
 
