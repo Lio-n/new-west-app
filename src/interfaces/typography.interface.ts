@@ -1,8 +1,8 @@
 type TextWeight = {
-  thin: string; // 100
-  normal: string; // 400
-  semibold: string; // 600
-  bold: string; // 700
+  "font-thin": string; // 100
+  "font-normal": string; // 400
+  "font-semibold": string; // 600
+  "font-bold": string; // 700
 };
 
 type TextColor = {
