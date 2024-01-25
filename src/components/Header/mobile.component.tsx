@@ -1,11 +1,11 @@
 import { useState } from "react";
 import MenuNavegationLinks from "../../ui/molecules/menuNavegationLinks.molecule";
 import HeaderInfo from "../../data/Header.data.json";
-import Brand from "../../ui/molecules/brand.molecule";
 import XMarkIcon from "../../ui/atoms/icons/x-mark.icon";
 import BarsThreeIcon from "../../ui/atoms/icons/barsThree.icon";
 import Button from "../../ui/atoms/button.atom";
 import MagnifyingGlassIcon from "../../ui/atoms/icons/magnifying-glass.icon";
+import Brand from "../../ui/atoms/brand.atom";
 
 const MobileHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,14 +21,14 @@ const MobileHeader = () => {
   );
 
   const HeaderContent = () => (
-    <div className="w-full flex justify-between my-0 mx-auto px-6 py-4 md:px-9 text-white">
+    <div className="w-full flex justify-between items-center my-0 mx-auto px-6 py-4 md:px-9 text-white">
       <Brand />
       <div>
         <Button className="mr-4">
-          <MagnifyingGlassIcon className="w-5 h-5 stroke-2" />
+          <MagnifyingGlassIcon className="w-5 h-5 stroke-[3px]" />
         </Button>
         <Button aria-label="menu-mobile" onClick={toggleMenu}>
-          {isOpen ? <XMarkIcon className="w-5 h-5" /> : <BarsThreeIcon className="w-5 h-5" />}
+          {isOpen ? <XMarkIcon className="w-5 h-5 stroke-[3px]" /> : <BarsThreeIcon className="w-5 h-5 stroke-[3px]" />}
         </Button>
       </div>
     </div>
