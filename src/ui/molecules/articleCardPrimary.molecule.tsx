@@ -1,5 +1,3 @@
-import formatDate from "../../lib/formatDate.lib";
-import timeSince from "../../lib/timeSince.lib";
 import Body from "../atoms/typographies/body.atom";
 import Phrase from "../atoms/typographies/phrase.atom";
 import Title from "../atoms/typographies/title.atom";
@@ -12,8 +10,14 @@ type Article = {
   href: string;
 };
 
+interface ParserAticle extends Article {
+  formatedDate: string;
+  timeSince: string;
+  formatedDuration: string;
+}
+
 interface ArticleCardPrimaryProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  data: Article;
+  data: ParserAticle;
 }
 
 const ArticleCardPrimary: React.FC<ArticleCardPrimaryProps> = ({ data, ...props }) => {
@@ -31,8 +35,8 @@ const ArticleCardPrimary: React.FC<ArticleCardPrimaryProps> = ({ data, ...props 
           </Body>
         </Body>
         <div className="flex justify-between">
-          <Phrase weight="font-semibold">{timeSince(data.publishedAt)}</Phrase>
-          <Phrase weight="font-semibold">{formatDate(data.publishedAt)}</Phrase>
+          <Phrase weight="font-semibold">{data.formatedDate}</Phrase>
+          <Phrase weight="font-semibold">{data.timeSince}</Phrase>
         </div>
       </div>
     </a>

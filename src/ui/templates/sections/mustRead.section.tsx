@@ -1,40 +1,44 @@
 import HeadingSection from "../../molecules/headingSection.molecule";
-import ArticleInfo from "../../../data/mock/Article.mock.json";
 import ArticleCardMid from "../../molecules/articleCardMid.molecule";
 import ArticleCardSmall from "../../molecules/articleCardSmall.molecule";
 
-const MustReadSection = () => {
+type Article = {
+  title: string;
+  description: string;
+  category: string;
+  cover: string;
+  readingTime: number;
+  publishedAt: string;
+  href: string;
+};
+
+interface ParserAticle extends Article {
+  formatedDate: string;
+  timeSince: string;
+  formatedDuration: string;
+}
+
+interface MustReadSectionProps extends React.HTMLAttributes<HTMLDivElement> {
+  data: ParserAticle[];
+  href: string;
+}
+
+const MustReadSection: React.FC<MustReadSectionProps> = ({ data, href, ...props }) => {
   const SmallArticlesList = () => (
     <ul className="grid gap-4 content-between">
-      {[ArticleInfo, ArticleInfo, ArticleInfo].map((data, index) => (
+      {data.slice(1).map((item, index) => (
         <li key={index} className="h-fit">
-          <ArticleCardSmall
-            className="md:grid-cols-[1fr,1fr]"
-            data={{
-              ...data.attributes,
-              cover: "https://fastly.picsum.photos/id/586/536/354.jpg?hmac=P7VlXEEnfksFtsPAdPrNzb5pPU0QKTGK8d2z_aFuH80",
-              href: "#",
-            }}
-          />
+          <ArticleCardSmall className="md:grid-cols-[1fr,1fr]" data={item} />
         </li>
       ))}
     </ul>
   );
 
   return (
-    <div className="my-8 mx-auto max-w-screen-2xl">
-      <HeadingSection title={"Must Read"} href={"#"} className="px-4 mb-8" />
+    <div className="my-8 mx-auto max-w-screen-2xl" {...props}>
+      <HeadingSection title={"Must Read"} href={href} className="px-4 mb-8" />
       <div className="grid gap-6 xl:grid-cols-[55%,40%] justify-evenly">
-        <ArticleCardMid
-          data={{
-            ...ArticleInfo.attributes,
-            description:
-              "Hundreds of thousands of people have been left without access to normal drinking water since the breach of the Kakhovka dam, Ukranine's President Volodymyr Zelensky has said.",
-            cover: "https://fastly.picsum.photos/id/586/536/354.jpg?hmac=P7VlXEEnfksFtsPAdPrNzb5pPU0QKTGK8d2z_aFuH80",
-            href: "#",
-          }}
-          includesREADMORE={false}
-        />
+        <ArticleCardMid data={data[0]} includesREADMORE={false} />
         <SmallArticlesList />
       </div>
     </div>

@@ -1,6 +1,3 @@
-import formatDate from "../../lib/formatDate.lib";
-import formatDuration from "../../lib/formatDuration.lib";
-import timeSince from "../../lib/timeSince.lib";
 import DotIcon from "../atoms/icons/dot.icon";
 import Body from "../atoms/typographies/body.atom";
 import Phrase from "../atoms/typographies/phrase.atom";
@@ -14,8 +11,14 @@ type Article = {
   href: string;
 };
 
+interface ParserAticle extends Article {
+  formatedDate: string;
+  timeSince: string;
+  formatedDuration: string;
+}
+
 interface ArticleCardSmallProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  data: Article;
+  data: ParserAticle;
 }
 
 const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, className = "", ...props }) => {
@@ -23,10 +26,10 @@ const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, className = "
     <div className="w-full h-fit sm:h-full p-4 bg-opacity-60 grid gap-2 md:px-6 xl:pr-0 xl:py-0 items-center">
       <div className="flex justify-between items-center w-fit">
         <Phrase color="body-400" weight="font-semibold">
-          {formatDate(data.publishedAt)}
+          {data.formatedDate}
         </Phrase>
         <DotIcon className="mx-2 h-[4px] w-[4px] bg-body-400" />
-        <Phrase color="body-400">{timeSince(data.publishedAt)}</Phrase>
+        <Phrase color="body-400">{data.timeSince}</Phrase>
       </div>
       <Body color="body-900" weight="font-bold" className="group-hover:text-blueberry-600">
         {data.title}
@@ -36,7 +39,7 @@ const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, className = "
           {data.category}
         </Phrase>
         <DotIcon className="mx-2 h-[4px] w-[4px] bg-body-400" />
-        <Phrase color="body-400">{formatDuration(data.readingTime)}</Phrase>
+        <Phrase color="body-400">{data.formatedDuration}</Phrase>
       </div>
     </div>
   );
