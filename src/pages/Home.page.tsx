@@ -1,58 +1,56 @@
 import HomeSection from "../ui/templates/sections/home.section";
 import LatestSection from "../ui/templates/sections/latest.section";
 import MustReadSection from "../ui/templates/sections/mustRead.section";
-import ArticleInfo from "../data/mock/ArticlesGraphqlRes.mock.json";
 import formatArticleData from "../helpers/formatArticleData.helper";
 import { ArticleEntityResponseCollection } from "../graphql/types/article.types";
 import NewsTickerInfo from "../data/mock/NewsTriker.mock.json";
-// import { useQuery } from "@apollo/client";
-// import { Query } from "../graphql/types/query.types";
-// import { GET_ARTICLES } from "../graphql/article/GetArticles.graphql";
+import { useQuery } from "@apollo/client";
+import { Query } from "../graphql/types/query.types";
+import { GET_ARTICLES } from "../graphql/article/GetArticles.graphql";
+import { sortByValues } from "../components/dropdowns/dropdownSortBy.component";
 
 const HomePage = () => {
-  /*   const {
-    loading: loadingLatest,
-    error: errorLatest,
-    data: dataLatest,
-  } = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+  const relevanteResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
     variables: {
-      pagination: { limit: 9 },
-      sort: ["createdAt:asc"],
+      pagination: { pageSize: 5, page: 1 },
+      sort: [sortByValues["Relevance"]],
     },
   });
 
-  console.log(`🚀 ~ { loading, error, data }:`, { loadingLatest, errorLatest, dataLatest });
-
-  const {
-    loading: loadingMustRead,
-    error: errorMustRead,
-    data: dataMustRead,
-  } = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+  const latestResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
     variables: {
-      pagination: { limit: 4 },
-      sort: ["createdAt:asc", "views:asc"],
+      pagination: { pageSize: 4, page: 1 },
+      sort: [sortByValues["Newest"]],
     },
   });
 
-  console.log(`🚀 ~ { loading, error, data }:`, { loadingMustRead, errorMustRead, dataMustRead }); */
-
-  const fetcher = () => {
-    return formatArticleData(ArticleInfo.data.articles as any as ArticleEntityResponseCollection);
-  };
-
-  const fetcherLastet = () => {
-    return formatArticleData(ArticleInfo.data.articles as any as ArticleEntityResponseCollection);
-  };
-
-  const fetcherMustRead = () => {
-    return formatArticleData(ArticleInfo.data.articles as any as ArticleEntityResponseCollection);
-  };
+  const mustReadResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+    variables: {
+      pagination: { pageSize: 4, page: 1 },
+      sort: ["views:asc"],
+    },
+  });
 
   return (
     <div className="py-24 lg:py-36 md:px-4">
-      <HomeSection articles={fetcher()} trikerInfo={NewsTickerInfo.updates} />
-      <LatestSection articles={fetcherLastet()} />
-      <MustReadSection articles={fetcherMustRead()} href={"/article/search?sort=relevance"} />
+      {relevanteResponse.data?.articles.data.length && (
+        <HomeSection
+          articles={formatArticleData(relevanteResponse.data?.articles)}
+          trikerInfo={NewsTickerInfo.updates}
+          isLoading={!relevanteResponse.loading}
+        />
+      )}
+
+      {latestResponse.data?.articles.data.length && (
+        <LatestSection articles={formatArticleData(latestResponse.data?.articles)} isLoading={!latestResponse.loading} />
+      )}
+      {mustReadResponse.data?.articles.data.length && (
+        <MustReadSection
+          articles={formatArticleData(mustReadResponse.data?.articles)}
+          href={"/article/search?sort=relevance"}
+          isLoading={!mustReadResponse.loading}
+        />
+      )}
     </div>
   );
 };

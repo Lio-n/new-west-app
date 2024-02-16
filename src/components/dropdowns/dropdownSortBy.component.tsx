@@ -14,6 +14,11 @@ interface DropdownSortByProps {
 }
 
 const sortingOptions = [SORT_BY.RELEVANCE, SORT_BY.NEWEST, SORT_BY.OLDEST];
+export const sortByValues = {
+  [SORT_BY.NEWEST]: "publishedAt:asc",
+  [SORT_BY.OLDEST]: "publishedAt:desc",
+  [SORT_BY.RELEVANCE]: "views:asc, claps:asc",
+};
 
 const DropdownSortBy: React.FC<DropdownSortByProps> = ({ onChange, defaultValues = SORT_BY.NEWEST }) => {
   // State to manage selected sort option

@@ -1,5 +1,7 @@
 import { ParsedArticle } from "../../helpers/formatArticleData.helper";
 import DotIcon from "../atoms/icons/dot.icon";
+import ImgSkeleton from "../atoms/skeleton/img.skeleton";
+import { ParagraphSkeleton } from "../atoms/skeleton/paragraph.skeleton";
 import Body from "../atoms/typographies/body.atom";
 import Phrase from "../atoms/typographies/phrase.atom";
 import SubHeading from "../atoms/typographies/subHeading.atom";
@@ -26,9 +28,9 @@ const ArticleCardMid: React.FC<ArticleCardMidProps> = ({ data, includesREADMORE 
         <Body color="body-400">
           {data.description}
           {includesREADMORE && (
-            <Body weight="font-bold" color="body-500">
+            <Phrase weight="font-bold" color="body-900" className="text-md md:text-lg whitespace-nowrap">
               Read More
-            </Body>
+            </Phrase>
           )}
         </Body>
       )}
@@ -55,4 +57,28 @@ const ArticleCardMid: React.FC<ArticleCardMidProps> = ({ data, includesREADMORE 
   );
 };
 
+const ArticleCardMidSkeleton = () => {
+  const ArticleDetails = () => (
+    <div className="w-full h-fit p-4 grid gap-2">
+      <div className="flex justify-between items-center w-fit">
+        <ParagraphSkeleton className="w-20" />
+      </div>
+      <ParagraphSkeleton className="w-full h-3" />
+      <ParagraphSkeleton className="w-3/6 h-3" />
+      <div className="flex justify-between items-center w-fit">
+        <ParagraphSkeleton className="w-20" />
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="grid grid-rows-[70%,30%] animate-pulse">
+      <ImgSkeleton className="max-h-60" />
+
+      <ArticleDetails />
+    </div>
+  );
+};
+
+export { ArticleCardMidSkeleton };
 export default ArticleCardMid;

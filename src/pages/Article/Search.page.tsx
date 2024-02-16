@@ -7,13 +7,12 @@ import { Query } from "../../graphql/types/query.types";
 import { useEffect, useState } from "react";
 import DropdownDateRange, { DATE_RANGE } from "../../components/dropdowns/dropdownDateRage.component";
 import DropdownCheckbox from "../../components/dropdowns/dropdownCategory.component";
-import DropdownSortBy, { SORT_BY } from "../../components/dropdowns/dropdownSortBy.component";
+import DropdownSortBy, { SORT_BY, sortByValues } from "../../components/dropdowns/dropdownSortBy.component";
 import getIntervalDates from "../../lib/getIntervalDates.lib";
 import ArticleCardSmall from "../../ui/molecules/articleCardSmall.molecule";
 import formatArticleData from "../../helpers/formatArticleData.helper";
 import { useSearchParams } from "react-router-dom";
 import Pagination from "../../ui/molecules/pagination.molecule";
-import ArticlesInfo from "../../data/mock/ArticlesGraphqlRes.mock.json";
 
 const SearchArticlePage = () => {
   const [defaultDropdown, setDefaultDropdown] = useState<{
@@ -23,10 +22,7 @@ const SearchArticlePage = () => {
   }>();
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState<Query["articles"]>();
-  const { loading, error, data } = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
-    variables: query,
-  });
-  const sortBy = { [SORT_BY.NEWEST]: "publishedAt:asc", [SORT_BY.OLDEST]: "publishedAt:desc", [SORT_BY.RELEVANCE]: "views:asc, claps:asc" };
+  const { loading, error, data } = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES);
   console.log(`🚀 ~ { loading, error, data }:`, { query, loading, error, data });
 
   useEffect(() => {
@@ -61,7 +57,7 @@ const SearchArticlePage = () => {
     setQuery({
       ...query,
       pagination: { pageSize: 10, page: 1 },
-      sort: [sortBy[sortParam]],
+      sort: [sortByValues[sortParam]],
       filters: {
         category: {
           in: categoryParam,
@@ -128,12 +124,11 @@ const SearchArticlePage = () => {
 
     setQuery({
       ...query,
-      sort: [sortBy[value]],
+      sort: [sortByValues[value]],
     });
   };
 
   const handlePageChange = (value: number) => {
-    console.log(`🚀 ~ value:`, value);
     setQuery({
       ...query,
       pagination: { pageSize: 10, page: value },
@@ -169,8 +164,7 @@ const SearchArticlePage = () => {
       </div>
 
       <div className="my-8 mx-auto">
-        <SearchResults results={ArticlesInfo.data.articles as unknown as ArticleEntityResponseCollection} />
-        {/* {data?.articles.data.length && <SearchResults results={data.articles} />} */}
+        {data?.articles.data.length && <SearchResults results={data.articles} />}
 
         {data?.articles.meta.pagination.pageCount && (
           <Pagination
