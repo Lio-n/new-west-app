@@ -14,14 +14,6 @@ export enum ENUM_ARTICLE_CATEGORY {
 
 export type ArticleCategory = {
   [key in keyof typeof ENUM_ARTICLE_CATEGORY]: boolean;
-  // Business: boolean;
-  // Entertainment: boolean;
-  // Health: boolean;
-  // Opinion: boolean;
-  // Politics: boolean;
-  // Sports: boolean;
-  // Travel: boolean;
-  // World: boolean;
 };
 
 export type Article = {
