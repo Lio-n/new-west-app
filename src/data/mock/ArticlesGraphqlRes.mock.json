@@ -1,0 +1,511 @@
+{
+  "data": {
+    "articles": {
+      "data": [
+        {
+          "id": "1",
+          "attributes": {
+            "title": "People spend night on roofs and in trees after Ukraine dam breach",
+            "readingTime": 240,
+            "description": "Hundreds of thousands of people have been left without access to normal drinking water since the breach of the Kakhovka dam, Ukranine's President Volodymyr Zelensky has said.",
+            "category": "World",
+            "publishedAt": "2024-01-22T19:05:42.551Z",
+            "cover": {
+              "data": {
+                "attributes": {
+                  "alternativeText": null,
+                  "caption": null,
+                  "createdAt": "2024-02-12T22:17:29.602Z",
+                  "ext": ".jpeg",
+                  "formats": {
+                    "thumbnail": {
+                      "name": "thumbnail_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 245,
+                      "height": 105,
+                      "size": 4.37,
+                      "url": "/uploads/thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "large": {
+                      "name": "large_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "large_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 1000,
+                      "height": 429,
+                      "size": 51.27,
+                      "url": "/uploads/large_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "medium": {
+                      "name": "medium_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "medium_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 750,
+                      "height": 321,
+                      "size": 30.65,
+                      "url": "/uploads/medium_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "small": {
+                      "name": "small_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "small_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 500,
+                      "height": 214,
+                      "size": 14.75,
+                      "url": "/uploads/small_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    }
+                  },
+                  "hash": "moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                  "height": 1512,
+                  "mime": "image/jpeg",
+                  "name": "moon-pillar-studio-the-wilds-3c.jpeg",
+                  "previewUrl": null,
+                  "provider": "local",
+                  "provider_metadata": null,
+                  "size": 588.11,
+                  "updatedAt": "2024-02-12T22:17:29.602Z",
+                  "url": "/uploads/moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg",
+                  "width": 3528,
+                  "__typename": "UploadFile"
+                },
+                "__typename": "UploadFileEntity"
+              },
+              "__typename": "UploadFileEntityResponse"
+            },
+            "__typename": "Article"
+          },
+          "__typename": "ArticleEntity"
+        },
+        {
+          "id": "2",
+          "attributes": {
+            "title": "People spend night on roofs and in trees after Ukraine dam breach",
+            "readingTime": 240,
+            "description": "Hundreds of thousands of people have been left without access to normal drinking water since the breach of the Kakhovka dam, Ukranine's President Volodymyr Zelensky has said.",
+            "category": "World",
+            "publishedAt": "2024-01-22T19:05:42.551Z",
+            "cover": {
+              "data": {
+                "attributes": {
+                  "alternativeText": null,
+                  "caption": null,
+                  "createdAt": "2024-02-12T22:17:29.602Z",
+                  "ext": ".jpeg",
+                  "formats": {
+                    "thumbnail": {
+                      "name": "thumbnail_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 245,
+                      "height": 105,
+                      "size": 4.37,
+                      "url": "/uploads/thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "large": {
+                      "name": "large_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "large_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 1000,
+                      "height": 429,
+                      "size": 51.27,
+                      "url": "/uploads/large_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "medium": {
+                      "name": "medium_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "medium_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 750,
+                      "height": 321,
+                      "size": 30.65,
+                      "url": "/uploads/medium_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "small": {
+                      "name": "small_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "small_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 500,
+                      "height": 214,
+                      "size": 14.75,
+                      "url": "/uploads/small_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    }
+                  },
+                  "hash": "moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                  "height": 1512,
+                  "mime": "image/jpeg",
+                  "name": "moon-pillar-studio-the-wilds-3c.jpeg",
+                  "previewUrl": null,
+                  "provider": "local",
+                  "provider_metadata": null,
+                  "size": 588.11,
+                  "updatedAt": "2024-02-12T22:17:29.602Z",
+                  "url": "/uploads/moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg",
+                  "width": 3528,
+                  "__typename": "UploadFile"
+                },
+                "__typename": "UploadFileEntity"
+              },
+              "__typename": "UploadFileEntityResponse"
+            },
+            "__typename": "Article"
+          },
+          "__typename": "ArticleEntity"
+        },
+        {
+          "id": "3",
+          "attributes": {
+            "title": "People spend night on roofs and in trees after Ukraine dam breach",
+            "readingTime": 240,
+            "description": "Hundreds of thousands of people have been left without access to normal drinking water since the breach of the Kakhovka dam, Ukranine's President Volodymyr Zelensky has said.",
+            "category": "World",
+            "publishedAt": "2024-01-22T19:05:42.551Z",
+            "cover": {
+              "data": {
+                "attributes": {
+                  "alternativeText": null,
+                  "caption": null,
+                  "createdAt": "2024-02-12T22:17:29.602Z",
+                  "ext": ".jpeg",
+                  "formats": {
+                    "thumbnail": {
+                      "name": "thumbnail_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 245,
+                      "height": 105,
+                      "size": 4.37,
+                      "url": "/uploads/thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "large": {
+                      "name": "large_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "large_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 1000,
+                      "height": 429,
+                      "size": 51.27,
+                      "url": "/uploads/large_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "medium": {
+                      "name": "medium_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "medium_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 750,
+                      "height": 321,
+                      "size": 30.65,
+                      "url": "/uploads/medium_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "small": {
+                      "name": "small_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "small_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 500,
+                      "height": 214,
+                      "size": 14.75,
+                      "url": "/uploads/small_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    }
+                  },
+                  "hash": "moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                  "height": 1512,
+                  "mime": "image/jpeg",
+                  "name": "moon-pillar-studio-the-wilds-3c.jpeg",
+                  "previewUrl": null,
+                  "provider": "local",
+                  "provider_metadata": null,
+                  "size": 588.11,
+                  "updatedAt": "2024-02-12T22:17:29.602Z",
+                  "url": "/uploads/moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg",
+                  "width": 3528,
+                  "__typename": "UploadFile"
+                },
+                "__typename": "UploadFileEntity"
+              },
+              "__typename": "UploadFileEntityResponse"
+            },
+            "__typename": "Article"
+          },
+          "__typename": "ArticleEntity"
+        },
+        {
+          "id": "4",
+          "attributes": {
+            "title": "People spend night on roofs and in trees after Ukraine dam breach",
+            "readingTime": 240,
+            "description": "Hundreds of thousands of people have been left without access to normal drinking water since the breach of the Kakhovka dam, Ukranine's President Volodymyr Zelensky has said.",
+            "category": "World",
+            "publishedAt": "2024-01-22T19:05:42.551Z",
+            "cover": {
+              "data": {
+                "attributes": {
+                  "alternativeText": null,
+                  "caption": null,
+                  "createdAt": "2024-02-12T22:17:29.602Z",
+                  "ext": ".jpeg",
+                  "formats": {
+                    "thumbnail": {
+                      "name": "thumbnail_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 245,
+                      "height": 105,
+                      "size": 4.37,
+                      "url": "/uploads/thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "large": {
+                      "name": "large_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "large_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 1000,
+                      "height": 429,
+                      "size": 51.27,
+                      "url": "/uploads/large_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "medium": {
+                      "name": "medium_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "medium_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 750,
+                      "height": 321,
+                      "size": 30.65,
+                      "url": "/uploads/medium_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "small": {
+                      "name": "small_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "small_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 500,
+                      "height": 214,
+                      "size": 14.75,
+                      "url": "/uploads/small_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    }
+                  },
+                  "hash": "moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                  "height": 1512,
+                  "mime": "image/jpeg",
+                  "name": "moon-pillar-studio-the-wilds-3c.jpeg",
+                  "previewUrl": null,
+                  "provider": "local",
+                  "provider_metadata": null,
+                  "size": 588.11,
+                  "updatedAt": "2024-02-12T22:17:29.602Z",
+                  "url": "/uploads/moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg",
+                  "width": 3528,
+                  "__typename": "UploadFile"
+                },
+                "__typename": "UploadFileEntity"
+              },
+              "__typename": "UploadFileEntityResponse"
+            },
+            "__typename": "Article"
+          },
+          "__typename": "ArticleEntity"
+        },
+        {
+          "id": "5",
+          "attributes": {
+            "title": "People spend night on roofs and in trees after Ukraine dam breach",
+            "readingTime": 240,
+            "description": "Hundreds of thousands of people have been left without access to normal drinking water since the breach of the Kakhovka dam, Ukranine's President Volodymyr Zelensky has said.",
+            "category": "World",
+            "publishedAt": "2024-01-22T19:05:42.551Z",
+            "cover": {
+              "data": {
+                "attributes": {
+                  "alternativeText": null,
+                  "caption": null,
+                  "createdAt": "2024-02-12T22:17:29.602Z",
+                  "ext": ".jpeg",
+                  "formats": {
+                    "thumbnail": {
+                      "name": "thumbnail_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 245,
+                      "height": 105,
+                      "size": 4.37,
+                      "url": "/uploads/thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "large": {
+                      "name": "large_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "large_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 1000,
+                      "height": 429,
+                      "size": 51.27,
+                      "url": "/uploads/large_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "medium": {
+                      "name": "medium_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "medium_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 750,
+                      "height": 321,
+                      "size": 30.65,
+                      "url": "/uploads/medium_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "small": {
+                      "name": "small_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "small_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 500,
+                      "height": 214,
+                      "size": 14.75,
+                      "url": "/uploads/small_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    }
+                  },
+                  "hash": "moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                  "height": 1512,
+                  "mime": "image/jpeg",
+                  "name": "moon-pillar-studio-the-wilds-3c.jpeg",
+                  "previewUrl": null,
+                  "provider": "local",
+                  "provider_metadata": null,
+                  "size": 588.11,
+                  "updatedAt": "2024-02-12T22:17:29.602Z",
+                  "url": "/uploads/moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg",
+                  "width": 3528,
+                  "__typename": "UploadFile"
+                },
+                "__typename": "UploadFileEntity"
+              },
+              "__typename": "UploadFileEntityResponse"
+            },
+            "__typename": "Article"
+          },
+          "__typename": "ArticleEntity"
+        },
+        {
+          "id": "6",
+          "attributes": {
+            "title": "People spend night on roofs and in trees after Ukraine dam breach",
+            "readingTime": 240,
+            "description": "Hundreds of thousands of people have been left without access to normal drinking water since the breach of the Kakhovka dam, Ukranine's President Volodymyr Zelensky has said.",
+            "category": "World",
+            "publishedAt": "2024-01-22T19:05:42.551Z",
+            "cover": {
+              "data": {
+                "attributes": {
+                  "alternativeText": null,
+                  "caption": null,
+                  "createdAt": "2024-02-12T22:17:29.602Z",
+                  "ext": ".jpeg",
+                  "formats": {
+                    "thumbnail": {
+                      "name": "thumbnail_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 245,
+                      "height": 105,
+                      "size": 4.37,
+                      "url": "/uploads/thumbnail_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "large": {
+                      "name": "large_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "large_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 1000,
+                      "height": 429,
+                      "size": 51.27,
+                      "url": "/uploads/large_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "medium": {
+                      "name": "medium_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "medium_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 750,
+                      "height": 321,
+                      "size": 30.65,
+                      "url": "/uploads/medium_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    },
+                    "small": {
+                      "name": "small_moon-pillar-studio-the-wilds-3c.jpeg",
+                      "hash": "small_moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                      "ext": ".jpeg",
+                      "mime": "image/jpeg",
+                      "path": null,
+                      "width": 500,
+                      "height": 214,
+                      "size": 14.75,
+                      "url": "/uploads/small_moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg"
+                    }
+                  },
+                  "hash": "moon_pillar_studio_the_wilds_3c_0b6acc2075",
+                  "height": 1512,
+                  "mime": "image/jpeg",
+                  "name": "moon-pillar-studio-the-wilds-3c.jpeg",
+                  "previewUrl": null,
+                  "provider": "local",
+                  "provider_metadata": null,
+                  "size": 588.11,
+                  "updatedAt": "2024-02-12T22:17:29.602Z",
+                  "url": "/uploads/moon_pillar_studio_the_wilds_3c_0b6acc2075.jpeg",
+                  "width": 3528,
+                  "__typename": "UploadFile"
+                },
+                "__typename": "UploadFileEntity"
+              },
+              "__typename": "UploadFileEntityResponse"
+            },
+            "__typename": "Article"
+          },
+          "__typename": "ArticleEntity"
+        }
+      ],
+      "meta": {
+        "pagination": {
+          "page": 1,
+          "pageCount": 1,
+          "pageSize": 10,
+          "total": 6,
+          "__typename": "Pagination"
+        },
+        "__typename": "ResponseCollectionMeta"
+      },
+      "__typename": "ArticleEntityResponseCollection"
+    }
+  }
+}
