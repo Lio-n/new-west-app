@@ -6,7 +6,7 @@ import MobileHeader from "./mobile.component";
 const PrimaryHeader = () => {
   const isLargeDevice = useMediaQuery(MediaQueryInfo.min.lg);
 
-  return <div className={`w-full backdrop-blur-lg fixed z-10`}>{isLargeDevice ? <DesktopHeader /> : <MobileHeader />}</div>;
+  return <div className={`w-full backdrop-blur-lg fixed z-20`}>{isLargeDevice ? <DesktopHeader /> : <MobileHeader />}</div>;
 };
 
 export default PrimaryHeader;

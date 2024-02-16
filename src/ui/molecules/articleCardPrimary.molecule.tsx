@@ -1,29 +1,20 @@
+import { ParsedArticle } from "../../helpers/formatArticleData.helper";
 import Body from "../atoms/typographies/body.atom";
 import Phrase from "../atoms/typographies/phrase.atom";
 import Title from "../atoms/typographies/title.atom";
 
-type Article = {
-  title: string;
-  description: string;
-  cover: string;
-  publishedAt: string;
-  href: string;
-};
-
-interface ParserAticle extends Article {
-  formatedDate: string;
-  timeSince: string;
-  formatedDuration: string;
-}
-
 interface ArticleCardPrimaryProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  data: ParserAticle;
+  data: ParsedArticle;
 }
 
 const ArticleCardPrimary: React.FC<ArticleCardPrimaryProps> = ({ data, ...props }) => {
   return (
     <a href={data.href} {...props} className="relative my-0 mx-auto group">
-      <img src={data.cover} alt={data.cover} className="absolute h-full w-full md:rounded-lg lg:w-10/12 md:right-0 object-cover" />
+      <img
+        src={data.cover.data?.attributes.formats.large.url}
+        alt={data.cover.data?.attributes.formats.large.name}
+        className="absolute h-full w-full md:rounded-lg lg:w-10/12 md:right-0 object-cover"
+      />
       <div className="mt-16 mb-32 xl:mb-0 xl:w-9/12 h-fit row-start-2 relative px-4 py-6 bg-body-200 bg-opacity-60 grid gap-4 sm:w-10/12 sm:rounded-tr-lg sm:rounded-br-lg md:p-8 2xl:p-9 lg:rounded-lg">
         <Title color="body-900" weight="font-bold" className="group-hover:text-blueberry-600">
           {data.title}

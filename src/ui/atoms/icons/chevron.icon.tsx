@@ -1,11 +1,12 @@
-import Chevron from "../../../assets/Chevron-right.svg?react";
+import Chevron from "../../../assets/Chevron-bottom.svg?react";
 
 interface ChevronIconProps extends React.SVGProps<SVGSVGElement> {
-  direction?: "left" | "right";
+  direction?: "left" | "right" | "bottom" | "top";
 }
 
-const ChevronIcon: React.FC<ChevronIconProps> = ({ direction = "right", ...props }) => (
-  <Chevron className={`${direction === "left" ? "rotate-180" : ""}`} {...props} />
-);
+const ChevronIcon: React.FC<ChevronIconProps> = ({ direction = "bottom", className = "", ...props }) => {
+  const directionStyle = { left: "rotate-90", right: "rotate-[-90deg]", bottom: "", top: "rotate-180" };
+  return <Chevron className={`${directionStyle[direction]} w-4 ${className}`} {...props} />;
+};
 
 export default ChevronIcon;

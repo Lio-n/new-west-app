@@ -9,7 +9,7 @@ type TextColor = {
   "body-400": string;
   "body-500": string;
   "body-900": string;
-  "chinese-blue": string;
+  "chinese-blue-400": string;
   "blueberry-600": string;
   "blueberry-700": string;
   "blueberry-800": string;

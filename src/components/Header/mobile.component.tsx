@@ -6,6 +6,7 @@ import BarsThreeIcon from "../../ui/atoms/icons/barsThree.icon";
 import Button from "../../ui/atoms/button.atom";
 import MagnifyingGlassIcon from "../../ui/atoms/icons/magnifying-glass.icon";
 import Brand from "../../ui/atoms/brand.atom";
+import NavegationLink from "../../ui/atoms/navegationLink.atom";
 
 const MobileHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,7 @@ const MobileHeader = () => {
     <div
       className={`overflow-auto w-full transition-opacity duration-300 ease-in ${
         isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-      } absolute w-full bg-chinese-blue p-4`}>
+      } absolute w-full bg-chinese-blue-400 p-4`}>
       <MenuNavegationLinks direction="vertical" data={HeaderInfo.navLinks} />
     </div>
   );
@@ -23,10 +24,10 @@ const MobileHeader = () => {
   const HeaderContent = () => (
     <div className="w-full flex justify-between items-center my-0 mx-auto px-6 py-4 md:px-9 text-white">
       <Brand />
-      <div>
-        <Button className="mr-4">
+      <div className="flex">
+        <NavegationLink className="p-2" href="/article/search">
           <MagnifyingGlassIcon className="w-5 h-5 stroke-[3px]" />
-        </Button>
+        </NavegationLink>
         <Button aria-label="menu-mobile" onClick={toggleMenu}>
           {isOpen ? <XMarkIcon className="w-5 h-5 stroke-[3px]" /> : <BarsThreeIcon className="w-5 h-5 stroke-[3px]" />}
         </Button>
@@ -35,7 +36,7 @@ const MobileHeader = () => {
   );
 
   return (
-    <div className={`w-full bg-chinese-blue`}>
+    <div className={`w-full bg-chinese-blue-400`}>
       <HeaderContent />
       <DropMenu />
     </div>

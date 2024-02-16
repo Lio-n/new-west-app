@@ -25,13 +25,13 @@ interface FilterCore<BASE> {
   startsWith: BASE;
 }
 
-export interface IDFilterInput extends FilterCore<number> {}
+export interface IDFilterInput extends Partial<FilterCore<number>> {}
 
-export interface DateTimeFilterInput extends FilterCore<Date> {}
+export interface DateTimeFilterInput extends Partial<FilterCore<Date>> {}
 
-export interface IntFilterInput extends FilterCore<number> {}
+export interface IntFilterInput extends Partial<FilterCore<number>> {}
 
-export interface StringFilterInput extends FilterCore<string> {}
+export interface StringFilterInput extends Partial<FilterCore<string>> {}
 
 export type PaginationArg = {
   limit: number;

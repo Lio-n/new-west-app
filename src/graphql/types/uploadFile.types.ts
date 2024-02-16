@@ -1,9 +1,20 @@
+interface FileFormat extends Pick<UploadFile, "name" | "hash" | "ext" | "mime" | "width" | "height" | "size" | "url"> {
+  path: string | null;
+}
+
+interface UploadFileFormats {
+  thumbnail: FileFormat;
+  large: FileFormat;
+  medium: FileFormat;
+  small: FileFormat;
+}
+
 interface UploadFile {
   alternativeText: string;
   caption: string;
   createdAt: Date;
   ext: string;
-  formats: JSON;
+  formats: UploadFileFormats;
   hash: string;
   height: number;
   mime: string;
@@ -11,7 +22,7 @@ interface UploadFile {
   previewUrl: string;
   provider: string;
   provider_metadata: JSON;
-  related: unknown[];
+  related: unknown[]; // type GenericMorph
   size: number;
   updatedAt: Date;
   url: string;

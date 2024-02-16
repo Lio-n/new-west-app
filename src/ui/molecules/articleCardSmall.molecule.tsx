@@ -1,24 +1,10 @@
+import { ParsedArticle } from "../../helpers/formatArticleData.helper";
 import DotIcon from "../atoms/icons/dot.icon";
 import Body from "../atoms/typographies/body.atom";
 import Phrase from "../atoms/typographies/phrase.atom";
 
-type Article = {
-  title: string;
-  cover: string;
-  category: string;
-  readingTime: number;
-  publishedAt: string;
-  href: string;
-};
-
-interface ParserAticle extends Article {
-  formatedDate: string;
-  timeSince: string;
-  formatedDuration: string;
-}
-
 interface ArticleCardSmallProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  data: ParserAticle;
+  data: ParsedArticle;
 }
 
 const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, className = "", ...props }) => {
@@ -46,7 +32,16 @@ const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, className = "
 
   return (
     <a href={data.href} {...props} className={`grid grid-rows-[70%,30%] sm:grid-cols-[30%,70%] group sm:w-fit ${className}`}>
-      <img src={data.cover} alt={data.cover} className="w-full h-full max-h-40 sm:rounded-tr-lg sm:rounded-br-lg md:rounded-lg object-cover" />
+      <picture>
+        {data.cover.data?.attributes.formats.small.url && (
+          <source srcSet={data.cover.data?.attributes.formats.small.url} media="(min-width: 800px)" />
+        )}
+        <img
+          src={data.cover.data?.attributes.formats.thumbnail.url}
+          alt={data.cover.data?.attributes.formats.thumbnail.name}
+          className="w-full h-full max-h-40 sm:rounded-tr-lg sm:rounded-br-lg md:rounded-lg object-cover"
+        />
+      </picture>
 
       <ArticleDetails />
     </a>

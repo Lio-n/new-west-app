@@ -1,7 +1,7 @@
 import { DateTimeFilterInput, IDFilterInput, IntFilterInput, ResponseCollectionMeta, StringFilterInput } from "./query.types";
 import { UploadFileEntityResponse } from "./uploadFile.types";
 
-enum ENUM_ARTICLE_CATEGORY {
+export enum ENUM_ARTICLE_CATEGORY {
   Business,
   Entertainment,
   Health,
@@ -12,11 +12,25 @@ enum ENUM_ARTICLE_CATEGORY {
   World,
 }
 
+export type ArticleCategory = {
+  [key in keyof typeof ENUM_ARTICLE_CATEGORY]: boolean;
+  // Business: boolean;
+  // Entertainment: boolean;
+  // Health: boolean;
+  // Opinion: boolean;
+  // Politics: boolean;
+  // Sports: boolean;
+  // Travel: boolean;
+  // World: boolean;
+};
+
 export type Article = {
   body: string;
   category: ENUM_ARTICLE_CATEGORY;
+  description: string;
   claps: number;
-  cover: UploadFileEntityResponse;
+  cover: Partial<UploadFileEntityResponse>;
+  readingTime: number; // minutes
   createdAt: Date;
   publishedAt: Date;
   title: string;

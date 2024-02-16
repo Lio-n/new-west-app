@@ -6,9 +6,9 @@ interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
 }
 
 const Link: React.FC<LinkProps> = ({ chevron, className = "", ...props }) => (
-  <a {...props} className={`hover:opacity-85 ${chevron ? "flex gap-4 items-center" : ""} ${className}`}>
+  <a {...props} className={`hover:opacity-85 whitespace-nowrap ${chevron ? "flex gap-4 items-center" : ""} ${className}`}>
     {props.text}
-    {chevron && <ChervronIcon className="stroke-[3px] w-6 h-6" />}
+    {chevron && <ChervronIcon direction="right" />}
   </a>
 );
 
