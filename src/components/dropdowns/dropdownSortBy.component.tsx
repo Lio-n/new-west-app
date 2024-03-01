@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChevronIcon from "../../ui/atoms/icons/chevron.icon";
 import Button from "../../ui/atoms/button.atom";
 
@@ -23,6 +23,8 @@ export const sortByValues = {
 const DropdownSortBy: React.FC<DropdownSortByProps> = ({ onChange, defaultValues = SORT_BY.NEWEST }) => {
   // State to manage selected sort option
   const [selectedOption, setSelectedOption] = useState<SORT_BY>(defaultValues);
+
+  useEffect(() => setSelectedOption(defaultValues), [defaultValues]);
 
   // Function to handle sort option selection
   const handleOptionSelect = (option: SORT_BY) => {

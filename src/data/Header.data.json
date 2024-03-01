@@ -1,13 +1,13 @@
 {
   "navLinks": [
-    { "text": "World", "href": "/article/search?category=World" },
-    { "text": "Politics", "href": "/article/search?category=Politics" },
-    { "text": "Business", "href": "/article/search?category=Business" },
-    { "text": "Opinion", "href": "/article/search?category=Opinion" },
-    { "text": "Entertainment", "href": "/article/search?category=Entertainment" },
-    { "text": "Travel", "href": "/article/search?category=Travel" },
-    { "text": "Sports", "href": "/article/search?category=Sports" },
-    { "text": "Health", "href": "/article/search?category=Health" },
+    { "text": "World", "href": "/article/category/World" },
+    { "text": "Politics", "href": "/article/category/Politics" },
+    { "text": "Business", "href": "/article/category/Business" },
+    { "text": "Opinion", "href": "/article/category/Opinion" },
+    { "text": "Entertainment", "href": "/article/category/Entertainment" },
+    { "text": "Travel", "href": "/article/category/Travel" },
+    { "text": "Sports", "href": "/article/category/Sports" },
+    { "text": "Health", "href": "/article/category/Health" },
     { "text": "About Us", "href": "/About Us" }
   ]
 }

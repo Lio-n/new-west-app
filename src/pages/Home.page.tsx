@@ -42,12 +42,12 @@ const HomePage = () => {
       )}
 
       {latestResponse.data?.articles.data.length && (
-        <LatestSection articles={formatArticleData(latestResponse.data?.articles)} isLoading={!latestResponse.loading} />
+        <LatestSection articles={formatArticleData(latestResponse.data?.articles)} isLoading={latestResponse.loading} />
       )}
       {mustReadResponse.data?.articles.data.length && (
         <MustReadSection
           articles={formatArticleData(mustReadResponse.data?.articles)}
-          href={"/article/search?sort=relevance"}
+          href={"/article/search?sort=Relevance"}
           isLoading={!mustReadResponse.loading}
         />
       )}

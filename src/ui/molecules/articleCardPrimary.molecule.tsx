@@ -23,7 +23,7 @@ const ArticleCardPrimary: React.FC<ArticleCardPrimaryProps> = ({ data, ...props 
         </Title>
         <Body>
           {data.description}
-          <Phrase weight="font-bold" color="body-900" className="text-md md:text-lg whitespace-nowrap">
+          <Phrase weight="font-bold" color="body-900" className="ml-2 text-md md:text-lg whitespace-nowrap">
             Read More
           </Phrase>
         </Body>

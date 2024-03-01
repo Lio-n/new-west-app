@@ -5,7 +5,7 @@ import HomePage from "../pages/Home.page";
 import Layout from "../components/Layout.component";
 import Page404 from "../pages/404.page";
 import SearchArticlePage from "../pages/Article/Search.page";
-import ArticleById from "../pages/Article/ById.page";
+import ArticleById from "../pages/Article/:id.page";
 import AboutUsPage from "../pages/AboutUs.page";
 import ArticleByCategory from "../pages/Article/Category/:slug.page";
 

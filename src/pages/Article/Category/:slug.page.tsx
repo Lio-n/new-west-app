@@ -1,41 +1,66 @@
-// import { Navigate, useParams } from "react-router-dom";
-import Title from "../../../ui/atoms/typographies/title.atom";
-// import { Categories } from "../../../constants/categories.constant";
-// import MainNews from "../../../ui/organisms/mainNews.organism";
-// import ArticleInfo from "../../../data/mock/Article.mock.json";
+import { useParams } from "react-router-dom";
+import MainNews, { MainNewsSkeleton } from "../../../ui/organisms/mainNews.organism";
+import formatArticleData from "../../../helpers/formatArticleData.helper";
+import { ArticleEntityResponseCollection } from "../../../graphql/types/article.types";
+import { sortByValues } from "../../../components/dropdowns/dropdownSortBy.component";
+import { useQuery } from "@apollo/client";
+import { Query } from "../../../graphql/types/query.types";
+import { GET_ARTICLES } from "../../../graphql/article/GetArticles.graphql";
+import MustReadSection from "../../../ui/templates/sections/mustRead.section";
+import NavegationSubLevel from "../../../ui/atoms/navegationSubLevel.atom";
 
 const ArticleByCategory = () => {
   // Based in the params.category value, the fetching and content should change.
-  /* 
   const params = useParams();
 
-  if (!Categories.includes((params.slug?.charAt(0).toUpperCase() as string) + params.slug?.slice(1))) {
-    return <Navigate to="/" replace />;
-  }
+  const latestResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+    variables: {
+      pagination: { pageSize: 4, page: 1 },
+      sort: [sortByValues["Newest"]],
+      filters: {
+        category: {
+          in: [params.slug || ""],
+        },
+      },
+    },
+  });
 
-  const fetcher = () => {
-    const { body, claps, views, createdAt, updatedAt, category, ...args } = ArticleInfo.attributes;
+  const mustReadResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+    variables: {
+      pagination: { pageSize: 4, page: 1 },
+      sort: ["views:asc"],
+      filters: {
+        category: {
+          in: [params.slug || ""],
+        },
+      },
+    },
+  });
 
-    const fetchedInfo = {
-      ...args,
-      category: params.slug as string,
-      description:
-        "Hundreds of thousands of people have been left without access to normal drinking water since the breach of the Kakhovka dam, Ukranine's President Volodymyr Zelensky has said.",
-      cover: "https://fastly.picsum.photos/id/586/536/354.jpg?hmac=P7VlXEEnfksFtsPAdPrNzb5pPU0QKTGK8d2z_aFuH80",
-      href: "#",
-    };
-
-    // return formatArticleData([fetchedInfo, fetchedInfo, fetchedInfo, fetchedInfo, fetchedInfo]);
-  };
- */
   return (
-    <div className="max-w-screen-2xl md:pb-40 sm:mx-auto my-0">
-      <Title className="capitalize border-b-2 w-full border-current pb-4" weight="font-semibold">
-        {/* {params.slug} News */}
-      </Title>
+    <div className="py-24 lg:py-36 md:px-4 max-w-screen-2xl m-auto">
+      <NavegationSubLevel
+        levels={{
+          1: {
+            text: "New West",
+            href: "/",
+          },
+          2: {
+            text: (params.slug as any as string) || "",
+            href: `category/${params.slug}`,
+          },
+        }}
+      />
+
       <div>
-        {/* <MainNews data={fetcher()} className="mb-16" /> */}
-        {/* <MustReadSection data={fetcher()} href={`/article/search?category=${params.slug}&sort=relevance`} /> */}
+        {latestResponse.loading && <MainNewsSkeleton />}
+        {latestResponse.data?.articles.data.length && <MainNews data={formatArticleData(latestResponse.data?.articles)} />}
+
+        <MustReadSection
+          articles={mustReadResponse.data?.articles.data && formatArticleData(mustReadResponse.data?.articles)}
+          href={`/article/search?sort=Relevance&category=${params.slug}`}
+          isLoading={mustReadResponse.loading}
+        />
       </div>
     </div>
   );

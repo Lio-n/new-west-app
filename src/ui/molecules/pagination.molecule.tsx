@@ -8,16 +8,16 @@ interface PaginationProps {
 
 const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, onPageChange }) => {
   const handlePageChange = (page: number) => {
-    !page && onPageChange(page);
+    if (page !== 0) onPageChange(page);
   };
 
   return (
     <nav aria-label="Page navigation" className="my-0 mx-auto w-fit">
-      <ul className="flex items-center -space-x-px h-8 text-sm">
+      <ul className="flex items-center -space-x-px h-8 text-sm gap-1">
         <li>
           <a
             href="#"
-            className={`flex items-center justify-center px-3 h-8 ms-0 leading-tight  text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ${
+            className={`rounded-full flex items-center justify-center px-3 h-8 ms-0 leading-tight  text-blueberry-600/[.90] bg-white border border-gray-300 hover:text-blueberry-700 hover:bg-blueberry-600/[.20]  ${
               currentPage === 1 || currentPage === 0 ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={() => handlePageChange(currentPage - 1)}>
@@ -28,10 +28,10 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, onPageC
           <li key={index}>
             <a
               href="#"
-              className={`flex items-center justify-center px-3 h-8 leading-tight ${
+              className={`rounded-full flex items-center justify-center px-3 h-8 leading-tight ${
                 index + 1 === currentPage
-                  ? "text-blue-600 bg-blue-50 border border-blue-300 hover:bg-blue-100 hover:text-blue-700"
-                  : "text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+                  ? "text-blueberry-600 bg-blueberry-600/[.10] border border-blueberry-600 hover:bg-blueberry-600/[.20] hover:text-blueberry-700"
+                  : "text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-blueberry-600"
               }`}
               onClick={() => handlePageChange(index + 1)}>
               {index + 1}
@@ -41,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, onPageC
         <li>
           <a
             href="#"
-            className={`flex items-center justify-center px-3 h-8 ms-0 leading-tight  text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700${
+            className={`rounded-full flex items-center justify-center px-3 h-8 ms-0 leading-tight  text-blueberry-600/[.90] bg-white border border-gray-300 hover:text-blueberry-700 hover:bg-blueberry-600/[.20] ${
               currentPage === pageCount ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={() => handlePageChange(currentPage + 1)}>
