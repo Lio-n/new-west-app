@@ -6,11 +6,12 @@ export default {
       maxWidth: {
         45: "45%",
         24: "24%",
+        "50p-minus-0.5rem": "calc(50% - .5rem)", // Custom max-width utility
       },
       colors: {
         "body-200": "#EDEDED",
         "body-400": "#7A7A7A",
-        "body-500": "#222",
+        "body-500": "rgb(36, 36, 36)",
         "body-900": "#050315",
         "chinese-blue-100": "#23205b",
         "chinese-blue-200": "#1b1948",

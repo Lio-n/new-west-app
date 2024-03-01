@@ -1,3 +1,4 @@
+import { BlocksContent } from "@strapi/blocks-react-renderer";
 import { DateTimeFilterInput, IDFilterInput, IntFilterInput, ResponseCollectionMeta, StringFilterInput } from "./query.types";
 import { UploadFileEntityResponse } from "./uploadFile.types";
 
@@ -17,7 +18,7 @@ export type ArticleCategory = {
 };
 
 export type Article = {
-  body: string;
+  body: BlocksContent;
   category: ENUM_ARTICLE_CATEGORY;
   description: string;
   claps: number;
@@ -30,7 +31,7 @@ export type Article = {
   views: number;
 };
 
-type ArticleEntity = {
+export type ArticleEntity = {
   attributes: Article;
   id: number;
 };
