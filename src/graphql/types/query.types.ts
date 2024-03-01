@@ -57,6 +57,10 @@ export enum PublicationState {
 }
 
 export interface Query {
+  article: {
+    // args
+    id: string | number | null;
+  };
   articles: {
     // args
     filters?: Partial<ArticleFiltersInput> | null; // ArticleFiltersInput

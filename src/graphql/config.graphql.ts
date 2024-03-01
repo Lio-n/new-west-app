@@ -1,7 +1,8 @@
 import { ApolloClient, InMemoryCache, NormalizedCacheObject } from "@apollo/client";
 // import { setContext } from "@apollo/client/link/context";
 import { MockLink } from "@apollo/client/testing";
-import MockGetArticles from "./article/GetArticles.mock";
+import MockGetArticles from "../data/mock/Articles/GetArticles.mock";
+import MockGetArticleById from "../data/mock/Articles/GetArticleById.mock";
 
 // const httpLink = createHttpLink({ uri: import.meta.env.VITE_API_URL + "/graphql" });
 
@@ -19,7 +20,7 @@ import MockGetArticles from "./article/GetArticles.mock";
 }); */
 
 export const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-  link: new MockLink(MockGetArticles),
+  link: new MockLink([...MockGetArticles, ...MockGetArticleById]),
   // link: from([authLink, httpLink]),
   cache: new InMemoryCache(),
   name: "new-west-app",

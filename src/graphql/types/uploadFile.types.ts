@@ -9,7 +9,7 @@ interface UploadFileFormats {
   small: FileFormat;
 }
 
-interface UploadFile {
+export interface UploadFile {
   alternativeText: string;
   caption: string;
   createdAt: Date;
