@@ -1,3 +1,4 @@
+import { Link, LinkProps } from "react-router-dom";
 import { ParsedArticle } from "../../helpers/formatArticleData.helper";
 import ImgSkeleton from "../atoms/skeleton/img.skeleton";
 import { ParagraphSkeleton } from "../atoms/skeleton/paragraph.skeleton";
@@ -5,13 +6,13 @@ import Body from "../atoms/typographies/body.atom";
 import Phrase from "../atoms/typographies/phrase.atom";
 import Title from "../atoms/typographies/title.atom";
 
-interface ArticleCardPrimaryProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+interface ArticleCardPrimaryProps extends Partial<LinkProps>, React.RefAttributes<HTMLAnchorElement> {
   data: ParsedArticle;
 }
 
 const ArticleCardPrimary: React.FC<ArticleCardPrimaryProps> = ({ data, ...props }) => {
   return (
-    <a href={data.href} {...props} className="relative my-0 mx-auto group">
+    <Link {...props} to={data.href} className="relative my-0 mx-auto group">
       <img
         src={data.cover.data?.attributes.formats.large.url}
         alt={data.cover.data?.attributes.formats.large.name}
@@ -32,7 +33,7 @@ const ArticleCardPrimary: React.FC<ArticleCardPrimaryProps> = ({ data, ...props 
           <Phrase weight="font-semibold">{data.timeSince}</Phrase>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 

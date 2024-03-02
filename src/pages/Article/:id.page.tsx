@@ -61,9 +61,12 @@ const ArticleById = () => {
 
         <div className="divider-solid" />
 
-        {topStoriesResponse.data?.articles.data && <TopStories articles={formatArticleData(topStoriesResponse.data?.articles)} />}
-
-        <div className="divider-solid" />
+        {topStoriesResponse.data?.articles.data && (
+          <>
+            <TopStories articles={formatArticleData(topStoriesResponse.data?.articles)} />
+            <div className="divider-solid" />
+          </>
+        )}
       </div>
     </div>
   );

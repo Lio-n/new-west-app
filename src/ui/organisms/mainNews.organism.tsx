@@ -9,7 +9,7 @@ interface MainNewsProps extends React.HTMLAttributes<HTMLDivElement> {
 const MainNews: React.FC<MainNewsProps> = ({ data, className = "", ...props }) => {
   const SmallArticlesList = () => (
     <ul className="grid gap-4 content-between">
-      {data.data.map(({ attributes: { description, ...item } }, index) => (
+      {data.data.slice(1).map(({ attributes: { description, ...item } }, index) => (
         <li key={index} className="h-fit">
           <ArticleCardSmall data={item} />
         </li>

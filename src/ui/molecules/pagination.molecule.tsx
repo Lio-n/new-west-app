@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ChevronIcon from "../atoms/icons/chevron.icon";
 
 interface PaginationProps {
@@ -15,14 +16,14 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, onPageC
     <nav aria-label="Page navigation" className="my-0 mx-auto w-fit">
       <ul className="flex items-center -space-x-px h-8 text-sm gap-1">
         <li>
-          <a
-            href="#"
+          <Link
+            to="#"
             className={`rounded-full flex items-center justify-center px-3 h-8 ms-0 leading-tight  text-blueberry-600/[.90] bg-white border border-gray-300 hover:text-blueberry-700 hover:bg-blueberry-600/[.20]  ${
               currentPage === 1 || currentPage === 0 ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={() => handlePageChange(currentPage - 1)}>
             <ChevronIcon direction="left" />
-          </a>
+          </Link>
         </li>
         {[...Array(pageCount)].map((_, index) => (
           <li key={index}>
@@ -39,14 +40,14 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, onPageC
           </li>
         ))}
         <li>
-          <a
-            href="#"
+          <Link
+            to="#"
             className={`rounded-full flex items-center justify-center px-3 h-8 ms-0 leading-tight  text-blueberry-600/[.90] bg-white border border-gray-300 hover:text-blueberry-700 hover:bg-blueberry-600/[.20] ${
               currentPage === pageCount ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={() => handlePageChange(currentPage + 1)}>
             <ChevronIcon direction="right" />
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

@@ -50,7 +50,7 @@ const FiltersDropdown: React.FC<FiltersDropdownProps> = ({ listenQuery }) => {
     });
 
     listenQuery({
-      pagination: { pageSize: 10, page: 1 },
+      pagination: { pageSize: 4, page: 1 },
       sort: [sortByValues[sortParam]],
       filters: {
         category: {

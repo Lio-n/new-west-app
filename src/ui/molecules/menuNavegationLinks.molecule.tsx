@@ -19,7 +19,7 @@ const MenuNavegationLinks: FC<MenuNavegationLinksProps> = ({ data, direction = "
     <ul className={`${direction === "horizontal" ? horizontalStyles : verticalStyles}`}>
       {data.map((item, index) => (
         <li className="py-1" key={index}>
-          <NavegationLink href={item.href} children={item.text} className="hover:font-normal" />
+          <NavegationLink to={item.href} children={item.text} className="hover:font-normal" />
         </li>
       ))}
     </ul>
