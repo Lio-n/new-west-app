@@ -40,7 +40,7 @@ const ArticleCardPrimarySkeleton = () => {
   return (
     <div className="relative my-0 mx-auto group w-full animate-pulse">
       <ImgSkeleton className="absolute h-full w-full md:rounded-lg lg:w-10/12 md:right-0" />
-      <div className="mt-16 mb-32 xl:mb-0 xl:w-9/12 h-fit row-start-2 relative px-4 py-6 bg-body-200 grid gap-4 sm:w-10/12 sm:rounded-tr-lg sm:rounded-br-lg md:p-8 2xl:p-9 lg:rounded-lg">
+      <div className="mt-16 mb-32 xl:mb-0 xl:w-9/12 h-[calc(100%-8rem)] row-start-2 relative px-4 py-6 bg-body-200 grid gap-4 sm:w-10/12 sm:rounded-tr-lg sm:rounded-br-lg md:p-8 2xl:p-9 lg:rounded-lg">
         <ParagraphSkeleton className="h-4" />
         <ParagraphSkeleton className="h-4 w-60" />
         <div>

@@ -3,7 +3,7 @@ import MainNews, { MainNewsSkeleton } from "../../organisms/mainNews.organism";
 import { ParsedArticleEntityResponseCollection } from "../../../helpers/formatArticleData.helper";
 
 interface HomeSectionProps {
-  articles: ParsedArticleEntityResponseCollection;
+  articles: ParsedArticleEntityResponseCollection|undefined;
   trikerInfo: string[];
   isLoading: boolean;
 }
@@ -14,7 +14,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({ articles, trikerInfo, isLoadi
       <NewsTicker data={trikerInfo} />
 
       {isLoading && <MainNewsSkeleton />}
-      {!isLoading && articles.data.length && <MainNews data={articles} />}
+      {!isLoading && articles?.data.length && <MainNews data={articles} />}
     </div>
   );
 };

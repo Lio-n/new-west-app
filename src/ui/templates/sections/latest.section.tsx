@@ -24,6 +24,7 @@ const LatestSection: React.FC<{ articles: ParsedArticleEntityResponseCollection;
   return (
     <div className="my-8 mx-auto max-w-screen-2xl">
       <HeadingSection title={"Latest news"} href={"/article/search/?sort=Newest&dateRange=ALL_TIME"} className="px-4 mb-8" />
+
       {isLoading && <MidArticlesListSkeleton />}
       {!isLoading && articles.data.length && <MidArticlesList />}
     </div>

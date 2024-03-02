@@ -1,5 +1,6 @@
 import { ParsedArticle } from "../../helpers/formatArticleData.helper";
 import DotIcon from "../atoms/icons/dot.icon";
+import { ParagraphSkeleton } from "../atoms/skeleton/paragraph.skeleton";
 import Body from "../atoms/typographies/body.atom";
 import Phrase from "../atoms/typographies/phrase.atom";
 import SubHeading from "../atoms/typographies/subHeading.atom";
@@ -7,9 +8,8 @@ import SubHeading from "../atoms/typographies/subHeading.atom";
 export interface ArticleDetailsItem
   extends Partial<Pick<ParsedArticle, "title" | "description" | "formatedDate" | "formatedDuration" | "timeSince" | "category">> {}
 
-interface ArticleDetailsProps extends React.AnchorHTMLAttributes<HTMLDivElement> {
+interface ArticleDetailsProps extends React.HTMLAttributes<HTMLDivElement> {
   data: ArticleDetailsItem;
-  className?: string;
   includesREADMORE?: boolean;
 }
 
@@ -47,4 +47,19 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ data, includesREADMORE 
   </div>
 );
 
+interface ArticleDetailsSkeletonProps extends React.HTMLAttributes<HTMLDivElement> {}
+const ArticleDetailsSkeleton: React.FC<ArticleDetailsSkeletonProps> = ({ className = "", ...props }) => (
+  <div className={`w-full h-fit grid gap-2 animate-pulse items-center ${className}`} {...props}>
+    <div className="flex justify-between items-center w-fit">
+      <ParagraphSkeleton className="w-20" />
+    </div>
+    <ParagraphSkeleton className="w-full h-3" />
+    <ParagraphSkeleton className="w-3/6 h-3" />
+    <div className="flex justify-between items-center w-fit">
+      <ParagraphSkeleton className="w-20" />
+    </div>
+  </div>
+);
+
+export { ArticleDetailsSkeleton };
 export default ArticleDetails;

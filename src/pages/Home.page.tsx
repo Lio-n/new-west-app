@@ -33,24 +33,21 @@ const HomePage = () => {
 
   return (
     <div className="py-24 lg:py-36 md:px-4">
-      {relevanteResponse.data?.articles.data.length && (
-        <HomeSection
-          articles={formatArticleData(relevanteResponse.data?.articles)}
-          trikerInfo={NewsTickerInfo.updates}
-          isLoading={!relevanteResponse.loading}
-        />
-      )}
+      <HomeSection
+        articles={relevanteResponse.data?.articles && formatArticleData(relevanteResponse.data?.articles)}
+        trikerInfo={NewsTickerInfo.updates}
+        isLoading={relevanteResponse.loading}
+      />
 
       {latestResponse.data?.articles.data.length && (
         <LatestSection articles={formatArticleData(latestResponse.data?.articles)} isLoading={latestResponse.loading} />
       )}
-      {mustReadResponse.data?.articles.data.length && (
-        <MustReadSection
-          articles={formatArticleData(mustReadResponse.data?.articles)}
-          href={"/article/search?sort=Relevance"}
-          isLoading={!mustReadResponse.loading}
-        />
-      )}
+
+      <MustReadSection
+        articles={mustReadResponse.data?.articles && formatArticleData(mustReadResponse.data?.articles)}
+        href={"/article/search?sort=Relevance"}
+        isLoading={mustReadResponse.loading}
+      />
     </div>
   );
 };

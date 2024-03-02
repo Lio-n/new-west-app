@@ -1,8 +1,7 @@
 import { UploadFileEntityResponse } from "../../graphql/types/uploadFile.types";
 import PictureSource from "../atoms/pictureSource.atom";
 import ImgSkeleton from "../atoms/skeleton/img.skeleton";
-import { ParagraphSkeleton } from "../atoms/skeleton/paragraph.skeleton";
-import ArticleDetails, { ArticleDetailsItem } from "./articleDetails.molecule";
+import ArticleDetails, { ArticleDetailsItem, ArticleDetailsSkeleton } from "./articleDetails.molecule";
 
 interface ArticleCardMidProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   data: ArticleDetailsItem & { href: string; cover: Partial<UploadFileEntityResponse> };
@@ -20,24 +19,11 @@ const ArticleCardMid: React.FC<ArticleCardMidProps> = ({ data, includesREADMORE 
 };
 
 const ArticleCardMidSkeleton = () => {
-  const ArticleDetails = () => (
-    <div className="w-full h-fit p-4 grid gap-2">
-      <div className="flex justify-between items-center w-fit">
-        <ParagraphSkeleton className="w-20" />
-      </div>
-      <ParagraphSkeleton className="w-full h-3" />
-      <ParagraphSkeleton className="w-3/6 h-3" />
-      <div className="flex justify-between items-center w-fit">
-        <ParagraphSkeleton className="w-20" />
-      </div>
-    </div>
-  );
-
   return (
     <div className="grid grid-rows-[70%,30%] animate-pulse">
-      <ImgSkeleton className="max-h-60" />
+      <ImgSkeleton className="min-h-60 h-full" />
 
-      <ArticleDetails />
+      <ArticleDetailsSkeleton className="p-4 gap-4" />
     </div>
   );
 };

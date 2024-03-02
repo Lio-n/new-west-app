@@ -22,9 +22,11 @@ const MustReadSection: React.FC<MustReadSectionProps> = ({ articles, href, isLoa
 
   const SmallArticlesListSkeleton = () => (
     <ul className="grid gap-4">
-      {[1, 2, 3].map((index) => (
-        <li key={index} children={<ArticleCardSmallSkeleton />} />
-      ))}
+      {Array(3)
+        .fill(0)
+        .map((index) => (
+          <li key={index} children={<ArticleCardSmallSkeleton />} />
+        ))}
     </ul>
   );
 

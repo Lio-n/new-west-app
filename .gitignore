@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 .env
-
+mock_graphql/*
 node_modules
 dist
 dist-ssr
