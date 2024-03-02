@@ -47,7 +47,7 @@ const ArticleByCategory = () => {
           },
           2: {
             text: (params.slug as any as string) || "",
-            href: `category/${params.slug}`,
+            href: `/article/category/${params.slug}`,
           },
         }}
       />

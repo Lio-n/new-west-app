@@ -13,7 +13,7 @@ const HeadingSection: React.FC<HeadingSectionProps> = ({ title, href, className 
       <Heading weight="font-semibold" color="body-900">
         {title}
       </Heading>
-      <Link href={href} text={"See All"} className="text-blueberry-600 font-bold" chevron={true} />
+      <Link to={href} text={"See All"} className="text-blueberry-600 font-bold" chevron={true} />
     </div>
   );
 };

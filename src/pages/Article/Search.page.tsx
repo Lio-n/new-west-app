@@ -17,6 +17,7 @@ const SearchArticlePage = () => {
   const { loading, error, data } = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES_WITHOUT_DESCRIPTION, {
     variables: query,
   });
+  console.log(`🚀 ~ { loading, error, data }:`, { loading, error, data });
 
   const handleListenQuery = (searchText: string) => {
     // If the value is the same, avoid to update the query state.

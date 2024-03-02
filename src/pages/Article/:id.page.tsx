@@ -20,6 +20,8 @@ import formatDate from "../../lib/formatDate.lib";
 import timeSince from "../../lib/timeSince.lib";
 import formatDuration from "../../lib/formatDuration.lib";
 import PictureSource from "../../ui/atoms/pictureSource.atom";
+import { ParagraphSkeleton } from "../../ui/atoms/skeleton/paragraph.skeleton";
+import ImgSkeleton from "../../ui/atoms/skeleton/img.skeleton";
 
 const ArticleById = () => {
   let params = useParams();
@@ -39,13 +41,20 @@ const ArticleById = () => {
 
   return (
     <div className="py-24 lg:py-36 md:px-4 xl:px-8">
-      <div className="wrapper">
-        {byIdResponse.data?.article.data.attributes.cover.data?.attributes && (
+      {byIdResponse.loading && <BlocksRenderSkeleton />}
+      {byIdResponse.data?.article.data.attributes && (
+        <div className="wrapper">
           <>
             <Body>{byIdResponse.data?.article.data.attributes.description}</Body>
-            <div className="full-bleed drop-shadow-xl">
-              <PictureSource sources={byIdResponse.data.article.data.attributes.cover.data.attributes} className="md:rounded-lg max-h-96 min-h-60" />
-            </div>
+
+            {byIdResponse.data.article.data.attributes.cover.data && (
+              <div className="full-bleed drop-shadow-xl">
+                <PictureSource
+                  sources={byIdResponse.data.article.data.attributes.cover.data.attributes}
+                  className="md:rounded-lg max-h-96 min-h-60"
+                />
+              </div>
+            )}
             <Header
               category={byIdResponse.data?.article.data.attributes.category}
               title={byIdResponse.data?.article.data.attributes.title}
@@ -53,21 +62,21 @@ const ArticleById = () => {
               readingTime={byIdResponse.data?.article.data.attributes.readingTime}
             />
           </>
-        )}
 
-        <article className="grid gap-4">
-          {byIdResponse.data?.article.data.attributes.body.length && <BlocksRender content={byIdResponse.data?.article.data.attributes.body} />}
-        </article>
+          <article className="grid gap-4">
+            <BlocksRender content={byIdResponse.data?.article.data.attributes.body} />
+          </article>
 
-        <div className="divider-solid" />
+          <div className="divider-solid" />
 
-        {topStoriesResponse.data?.articles.data && (
-          <>
-            <TopStories articles={formatArticleData(topStoriesResponse.data?.articles)} />
-            <div className="divider-solid" />
-          </>
-        )}
-      </div>
+          {topStoriesResponse.data?.articles.data && (
+            <>
+              <TopStories articles={formatArticleData(topStoriesResponse.data?.articles)} />
+              <div className="divider-solid" />
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };
@@ -122,5 +131,34 @@ const TopStories = ({ articles }: { articles: ParsedArticleEntityResponseCollect
     </ul>
   </div>
 );
+
+const BlocksRenderSkeleton = () => {
+  const TextBigSkeleton = () => (
+    <div className="space-y-2 mt-8">
+      <ParagraphSkeleton className="h-6" />
+      <ParagraphSkeleton className="h-6 w-11/12" />
+      <ParagraphSkeleton className="h-6 w-9/12" />
+    </div>
+  );
+
+  const TextSmallSkeleton = () => (
+    <div className="space-y-2">
+      <ParagraphSkeleton className="w-full" />
+      <ParagraphSkeleton className="w-11/12" />
+      <ParagraphSkeleton className="w-9/12" />
+    </div>
+  );
+
+  return (
+    <div className="wrapper">
+      <TextSmallSkeleton />
+      <ImgSkeleton className="full-bleed max-h-96 min-h-60" />
+      <TextBigSkeleton />
+      <TextBigSkeleton />
+      <TextBigSkeleton />
+      <TextBigSkeleton />
+    </div>
+  );
+};
 
 export default ArticleById;

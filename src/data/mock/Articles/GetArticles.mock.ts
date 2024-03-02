@@ -258,14 +258,52 @@ const MockQuerySortMustRead = {
 
 const MockQuerySortMustReadCategoryPolitics = {
   request: {
-    query: GET_ARTICLES,
+    query: GET_ARTICLES_WITHOUT_DESCRIPTION,
     variables: {
       pagination: { pageSize: 4, page: 1 },
-      sort: ["views:asc"], // Relevance
-      filters: { category: { in: ["Politics"] } }, // Politics
+      sort: [sortByValues[SORT_BY.RELEVANCE]], // Relevance
+      filters: { category: { in: ["Politics"] }, title: { contains: "" } }, // Politics
     },
   },
-  result: MockQuerySortNewest.result,
+  result: {
+    data: {
+      articles: {
+        data: [
+          {
+            id: "1",
+            attributes: { ...MockArticleItemTwo, description: "Politics" },
+            __typename: "ArticleEntity",
+          },
+          {
+            id: "2",
+            attributes: { ...MockArticleItemTwo, description: "Politics" },
+            __typename: "ArticleEntity",
+          },
+          {
+            id: "3",
+            attributes: { ...MockArticleItemTwo, description: "Politics" },
+            __typename: "ArticleEntity",
+          },
+          {
+            id: "4",
+            attributes: { ...MockArticleItemTwo, description: "Politics" },
+            __typename: "ArticleEntity",
+          },
+        ],
+        meta: {
+          pagination: {
+            page: 1,
+            pageCount: 2,
+            pageSize: 4,
+            total: 8,
+            __typename: "Pagination",
+          },
+          __typename: "ResponseCollectionMeta",
+        },
+        __typename: "ArticleEntityResponseCollection",
+      },
+    },
+  },
 };
 
 const MockQuerySortNewestCategoryPolitics = {

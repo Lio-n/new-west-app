@@ -17,7 +17,7 @@ import PictureSource from "../ui/atoms/pictureSource.atom";
 
 const CustomBlocks: Partial<BlocksComponents> = {
   image: ({ image }: GetPropsFromNode<ImageBlockNode> | any) => {
-    return <PictureSource sources={image} className="max-h-96 rounded-lg" />;
+    return <PictureSource sources={image} className="max-h-96 rounded-lg aspect-video" />;
   },
   paragraph: (value: GetPropsFromNode<ParagraphBlockNode>) => <Body>{value.children}</Body>,
   quote: (value: GetPropsFromNode<QuoteBlockNode>) => <Blockquote weight="font-semibold">{value.children}</Blockquote>,
