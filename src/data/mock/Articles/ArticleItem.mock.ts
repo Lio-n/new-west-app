@@ -79,12 +79,12 @@ const MockArticleItemOne = {
 };
 
 const MockArticleItemTwo = {
-  title: "People spend night on roofs and in trees after Ukraine dam breach",
-  readingTime: 240,
+  title: "Quae cupiditate aspernatur illum libero temporibus",
+  readingTime: 480,
   description:
-    "Hundreds of thousands of people have been left without access to normal drinking water since the breach of the Kakhovka dam, Ukranine's President Volodymyr Zelensky has said.",
+    "Maxime incidunt natus consequuntur consectetur? Deserunt alias ex similique, illum architecto, corporis animi iure repellendus aperiam asperiores tenetur nam dolorum eos.",
   category: "World",
-  publishedAt: "2024-01-22T19:05:42.551Z",
+  publishedAt: "2024-02-10T19:05:42.551Z",
   cover: {
     data: {
       attributes: {
