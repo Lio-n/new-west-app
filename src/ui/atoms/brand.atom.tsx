@@ -1,5 +1,2 @@
-const Brand = ({ theme }: { theme?: "dark" | "light" }) => {
-  return <div className={`text-4xl sm:text-3xl ${theme === "light" ? "text-body-900" : "text-white"}`}>NewWest</div>;
-};
-
+const Brand = () => <img src="/NewWest_logo.svg" alt="Logo.svg" width={54} height={54} />;
 export default Brand;
