@@ -1,7 +1,7 @@
 /* note: This types are from the library *@strapi/blocks-react-renderer*, located at *@strapi/blocks-react-renderer/dist/BlocksRenderer.d.ts* */
 
 interface TextInlineNode {
-  type: "text";
+  type: 'text';
   text: string;
   bold?: boolean;
   italic?: boolean;
@@ -9,43 +9,43 @@ interface TextInlineNode {
   strikethrough?: boolean;
   code?: boolean;
 }
-type Modifier = Exclude<keyof TextInlineNode, "type" | "text">;
+type Modifier = Exclude<keyof TextInlineNode, 'type' | 'text'>;
 
 interface LinkInlineNode {
-  type: "link";
+  type: 'link';
   url: string;
   children: TextInlineNode[];
 }
 interface ListItemInlineNode {
-  type: "list-item";
+  type: 'list-item';
   children: DefaultInlineNode[];
 }
 type DefaultInlineNode = TextInlineNode | LinkInlineNode;
 type NonTextInlineNode = Exclude<DefaultInlineNode, TextInlineNode> | ListItemInlineNode;
 interface ParagraphBlockNode {
-  type: "paragraph";
+  type: 'paragraph';
   children: DefaultInlineNode[];
 }
 interface QuoteBlockNode {
-  type: "quote";
+  type: 'quote';
   children: DefaultInlineNode[];
 }
 interface CodeBlockNode {
-  type: "code";
+  type: 'code';
   children: DefaultInlineNode[];
 }
 interface HeadingBlockNode {
-  type: "heading";
+  type: 'heading';
   level: 1 | 2 | 3 | 4 | 5 | 6;
   children: DefaultInlineNode[];
 }
 interface ListBlockNode {
-  type: "list";
-  format: "ordered" | "unordered";
+  type: 'list';
+  format: 'ordered' | 'unordered';
   children: (ListItemInlineNode | ListBlockNode)[];
 }
 interface ImageBlockNode {
-  type: "image";
+  type: 'image';
   image: {
     name: string;
     alternativeText?: string | null;
@@ -66,23 +66,23 @@ interface ImageBlockNode {
   };
   children: [
     {
-      type: "text";
-      text: "";
+      type: 'text';
+      text: '';
     }
   ];
 }
 type RootNode = ParagraphBlockNode | QuoteBlockNode | CodeBlockNode | HeadingBlockNode | ListBlockNode | ImageBlockNode;
-type NodeRender = RootNode | NonTextInlineNode;
-type GetPropsFromNode<T> = Omit<T, "type" | "children"> & {
+type Node = RootNode | NonTextInlineNode;
+type GetPropsFromNode<T> = Omit<T, 'type' | 'children'> & {
   children?: React.ReactNode;
   plainText?: T extends {
-    type: "code";
+    type: 'code';
   }
     ? string
     : never;
 };
 type BlocksComponents = {
-  [K in NodeRender["type"]]: React.ComponentType<
+  [K in Node['type']]: React.ComponentType<
     GetPropsFromNode<
       Extract<
         Node,

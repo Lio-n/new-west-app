@@ -1,5 +1,5 @@
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
-import Body from "../ui/atoms/typographies/body.atom";
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import Body from '../ui/atoms/typographies/body.atom';
 import {
   BlocksComponents,
   BlocksRendererProps,
@@ -8,16 +8,17 @@ import {
   ListItemInlineNode,
   ParagraphBlockNode,
   QuoteBlockNode,
-} from "../interfaces/blocksRender.interface";
-import Title from "../ui/atoms/typographies/title.atom";
-import Heading from "../ui/atoms/typographies/heading.atom";
-import SubHeading from "../ui/atoms/typographies/subHeading.atom";
-import Blockquote from "../ui/atoms/typographies/blockquote.atom";
-import PictureSource from "../ui/atoms/pictureSource.atom";
+} from '../interfaces/blocksRender.interface';
+import Title from '../ui/atoms/typographies/title.atom';
+import Heading from '../ui/atoms/typographies/heading.atom';
+import SubHeading from '../ui/atoms/typographies/subHeading.atom';
+import Blockquote from '../ui/atoms/typographies/blockquote.atom';
+import PictureSource from '../ui/atoms/pictureSource.atom';
+import { UploadFile } from '../graphql/types/uploadFile.types';
 
 const CustomBlocks: Partial<BlocksComponents> = {
-  image: ({ image }: GetPropsFromNode<ImageBlockNode> | any) => {
-    return <PictureSource sources={image} className="max-h-96 rounded-lg aspect-video" />;
+  image: ({ image }: GetPropsFromNode<ImageBlockNode>) => {
+    return <PictureSource sources={image as unknown as UploadFile} className="max-h-96 rounded-lg aspect-video" />;
   },
   paragraph: (value: GetPropsFromNode<ParagraphBlockNode>) => <Body>{value.children}</Body>,
   quote: (value: GetPropsFromNode<QuoteBlockNode>) => <Blockquote weight="font-semibold">{value.children}</Blockquote>,
@@ -41,13 +42,13 @@ const CustomBlocks: Partial<BlocksComponents> = {
         return <Title>{children}</Title>;
     }
   },
-  "list-item": (value: GetPropsFromNode<ListItemInlineNode>) => (
+  'list-item': (value: GetPropsFromNode<ListItemInlineNode>) => (
     <li className="list-disc list-inside text-md md:text-lg text-body-500 font-normal smooth-transition">{value.children}</li>
   ),
 };
 
 const BlocksRender = ({ content, blocks = CustomBlocks, modifiers }: BlocksRendererProps) => {
-  return <BlocksRenderer content={content} blocks={blocks as any} modifiers={modifiers} />;
+  return <BlocksRenderer content={content} blocks={blocks} modifiers={modifiers} />;
 };
 
 export default BlocksRender;

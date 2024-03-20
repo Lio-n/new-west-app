@@ -1,33 +1,33 @@
-import HomeSection from "../ui/templates/sections/home.section";
-import LatestSection from "../ui/templates/sections/latest.section";
-import MustReadSection from "../ui/templates/sections/mustRead.section";
-import formatArticleData from "../helpers/formatArticleData.helper";
-import { ArticleEntityResponseCollection } from "../graphql/types/article.types";
-import NewsTickerInfo from "../data/mock/NewsTriker.mock.json";
-import { useQuery } from "@apollo/client";
-import { Query } from "../graphql/types/query.types";
-import { GET_ARTICLES } from "../graphql/article/GetArticles.graphql";
-import { sortByValues } from "../components/dropdowns/dropdownSortBy.component";
+import HomeSection from '../ui/templates/sections/home.section';
+import LatestSection from '../ui/templates/sections/latest.section';
+import MustReadSection from '../ui/templates/sections/mustRead.section';
+import formatArticleData from '../helpers/formatArticleData.helper';
+import { ArticleEntityResponseCollection } from '../graphql/types/article.types';
+import NewsTickerInfo from '../data/mock/NewsTriker.mock.json';
+import { useQuery } from '@apollo/client';
+import { Query } from '../graphql/types/query.types';
+import { GET_ARTICLES } from '../graphql/article/GetArticles.graphql';
+import { sortByValues } from '../interfaces/filterOptions.interface';
 
 const HomePage = () => {
-  const relevanteResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+  const relevanteResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query['articles']>(GET_ARTICLES, {
     variables: {
       pagination: { pageSize: 5, page: 1 },
-      sort: [sortByValues["Relevance"]],
+      sort: [sortByValues['Relevance']],
     },
   });
 
-  const latestResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+  const latestResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query['articles']>(GET_ARTICLES, {
     variables: {
       pagination: { pageSize: 4, page: 1 },
-      sort: [sortByValues["Newest"]],
+      sort: [sortByValues['Newest']],
     },
   });
 
-  const mustReadResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+  const mustReadResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query['articles']>(GET_ARTICLES, {
     variables: {
       pagination: { pageSize: 4, page: 1 },
-      sort: ["views:asc"],
+      sort: ['views:asc'],
     },
   });
 
@@ -45,7 +45,7 @@ const HomePage = () => {
 
       <MustReadSection
         articles={mustReadResponse.data?.articles && formatArticleData(mustReadResponse.data?.articles)}
-        href={"/article/search?sort=Relevance"}
+        href={'/article/search?sort=Relevance'}
         isLoading={mustReadResponse.loading}
       />
     </div>

@@ -1,20 +1,13 @@
-import React, { useState } from "react";
-import ChevronIcon from "../../ui/atoms/icons/chevron.icon";
-import Button from "../../ui/atoms/button.atom";
-
-// Would use the used enum.
-export enum DATE_RANGE {
-  ALL_TIME = "ALL_TIME",
-  YESTERDAY = "YESTERDAY",
-  PAST_WEEK = "PAST_WEEK",
-  PAST_MONTH = "PAST_MONTH",
-}
+import React, { useState } from 'react';
+import ChevronIcon from '../../ui/atoms/icons/chevron.icon';
+import Button from '../../ui/atoms/button.atom';
+import { DATE_RANGE } from '../../interfaces/filterOptions.interface';
 
 const DATE_RANGE_STRING_MAP: Record<DATE_RANGE, string> = {
-  [DATE_RANGE.ALL_TIME]: "All since 2000",
-  [DATE_RANGE.YESTERDAY]: "Yesterday",
-  [DATE_RANGE.PAST_WEEK]: "Past week",
-  [DATE_RANGE.PAST_MONTH]: "Past month",
+  [DATE_RANGE.ALL_TIME]: 'All since 2000',
+  [DATE_RANGE.YESTERDAY]: 'Yesterday',
+  [DATE_RANGE.PAST_WEEK]: 'Past week',
+  [DATE_RANGE.PAST_MONTH]: 'Past month',
 };
 
 const sortingOptions: DATE_RANGE[] = [DATE_RANGE.ALL_TIME, DATE_RANGE.YESTERDAY, DATE_RANGE.PAST_WEEK, DATE_RANGE.PAST_MONTH];
@@ -45,8 +38,9 @@ const DropdownDateRange: React.FC<DropdownDateRangeProps> = ({ onChange, default
           <Button
             onClick={() => handleOptionSelect(option)}
             className={`block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-chinese-blue-100 dark:hover:text-white ${
-              selectedOption === option ? "bg-gray-100 dark:bg-chinese-blue-100 dark:text-white" : ""
-            }`}>
+              selectedOption === option ? 'bg-gray-100 dark:bg-chinese-blue-100 dark:text-white' : ''
+            }`}
+          >
             {DATE_RANGE_STRING_MAP[option]}
           </Button>
         </li>
@@ -61,7 +55,8 @@ const DropdownDateRange: React.FC<DropdownDateRangeProps> = ({ onChange, default
         id="dropdownDateRange"
         data-dropdown-toggle="dropdown"
         className="text-slate-700 hover:text-slate-500 font-medium text-sm p-2.5 text-center inline-flex items-center"
-        type="button">
+        type="button"
+      >
         Date Range
         <ChevronIcon className="w-2.5 h-2.5 ms-3" />
       </Button>

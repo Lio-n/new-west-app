@@ -1,4 +1,4 @@
-interface FileFormat extends Pick<UploadFile, "name" | "hash" | "ext" | "mime" | "width" | "height" | "size" | "url"> {
+interface FileFormat extends Pick<UploadFile, 'name' | 'hash' | 'ext' | 'mime' | 'width' | 'height' | 'size' | 'url'> {
   path: string | null;
 }
 

@@ -1,41 +1,41 @@
-import { useParams } from "react-router-dom";
-import { Query } from "../../graphql/types/query.types";
-import { useQuery } from "@apollo/client";
-import { Article, ArticleEntity, ArticleEntityResponseCollection } from "../../graphql/types/article.types";
-import { GET_ARTICLE_BY_ID } from "../../graphql/article/GetArticleById.graphql";
-import BlocksRender from "../../components/BlocksRender.component";
-import Body from "../../ui/atoms/typographies/body.atom";
-import NavegationSubLevel from "../../ui/atoms/navegationSubLevel.atom";
-import Title from "../../ui/atoms/typographies/title.atom";
-import ShareIcon from "../../ui/atoms/icons/share.icon";
-import BookmarkIcon from "../../ui/atoms/icons/bookmark.icon";
-import ClapsIcon from "../../ui/atoms/icons/claps.icon";
-import Heading from "../../ui/atoms/typographies/heading.atom";
-import { sortByValues } from "../../components/dropdowns/dropdownSortBy.component";
-import formatArticleData, { ParsedArticleEntityResponseCollection } from "../../helpers/formatArticleData.helper";
-import { GET_ARTICLES } from "../../graphql/article/GetArticles.graphql";
-import ArticleCardMid from "../../ui/molecules/articleCardMid.molecule";
-import ArticleDetails from "../../ui/molecules/articleDetails.molecule";
-import formatDate from "../../lib/formatDate.lib";
-import timeSince from "../../lib/timeSince.lib";
-import formatDuration from "../../lib/formatDuration.lib";
-import PictureSource from "../../ui/atoms/pictureSource.atom";
-import { ParagraphSkeleton } from "../../ui/atoms/skeleton/paragraph.skeleton";
-import ImgSkeleton from "../../ui/atoms/skeleton/img.skeleton";
+import { useParams } from 'react-router-dom';
+import { Query } from '../../graphql/types/query.types';
+import { useQuery } from '@apollo/client';
+import { Article, ArticleEntity, ArticleEntityResponseCollection } from '../../graphql/types/article.types';
+import { GET_ARTICLE_BY_ID } from '../../graphql/article/GetArticleById.graphql';
+import BlocksRender from '../../components/BlocksRender.component';
+import Body from '../../ui/atoms/typographies/body.atom';
+import NavegationSubLevel from '../../ui/atoms/navegationSubLevel.atom';
+import Title from '../../ui/atoms/typographies/title.atom';
+import ShareIcon from '../../ui/atoms/icons/share.icon';
+import BookmarkIcon from '../../ui/atoms/icons/bookmark.icon';
+import ClapsIcon from '../../ui/atoms/icons/claps.icon';
+import Heading from '../../ui/atoms/typographies/heading.atom';
+import formatArticleData, { ParsedArticleEntityResponseCollection } from '../../helpers/formatArticleData.helper';
+import { GET_ARTICLES } from '../../graphql/article/GetArticles.graphql';
+import ArticleCardMid from '../../ui/molecules/articleCardMid.molecule';
+import ArticleDetails from '../../ui/molecules/articleDetails.molecule';
+import formatDate from '../../lib/formatDate.lib';
+import timeSince from '../../lib/timeSince.lib';
+import formatDuration from '../../lib/formatDuration.lib';
+import PictureSource from '../../ui/atoms/pictureSource.atom';
+import { ParagraphSkeleton } from '../../ui/atoms/skeleton/paragraph.skeleton';
+import ImgSkeleton from '../../ui/atoms/skeleton/img.skeleton';
+import { sortByValues } from '../../interfaces/filterOptions.interface';
 
 const ArticleById = () => {
-  let params = useParams();
+  const params = useParams();
 
-  const byIdResponse = useQuery<{ article: { data: ArticleEntity } }, Query["article"]>(GET_ARTICLE_BY_ID, {
+  const byIdResponse = useQuery<{ article: { data: ArticleEntity } }, Query['article']>(GET_ARTICLE_BY_ID, {
     variables: {
       id: params.id || null,
     },
   });
 
-  const topStoriesResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+  const topStoriesResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query['articles']>(GET_ARTICLES, {
     variables: {
       pagination: { pageSize: 4, page: 1 },
-      sort: [sortByValues["Relevance"]],
+      sort: [sortByValues['Relevance']],
     },
   });
 
@@ -81,7 +81,7 @@ const ArticleById = () => {
   );
 };
 
-interface HeaderProps extends Pick<Article, "category" | "title" | "publishedAt" | "readingTime"> {}
+interface HeaderProps extends Pick<Article, 'category' | 'title' | 'publishedAt' | 'readingTime'> {}
 
 const Header: React.FC<HeaderProps> = ({ category, title, publishedAt, readingTime }) => (
   <div className="my-4">
@@ -89,11 +89,11 @@ const Header: React.FC<HeaderProps> = ({ category, title, publishedAt, readingTi
       <NavegationSubLevel
         levels={{
           1: {
-            text: "New West",
-            href: "/",
+            text: 'New West',
+            href: '/',
           },
           2: {
-            text: (category as any as string) || "",
+            text: (category as unknown as string) || '',
             href: `category/${category}`,
           },
         }}

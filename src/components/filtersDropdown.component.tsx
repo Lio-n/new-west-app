@@ -1,14 +1,15 @@
-import { useSearchParams } from "react-router-dom";
-import { ArticleCategory, ENUM_ARTICLE_CATEGORY } from "../graphql/types/article.types";
-import { Query } from "../graphql/types/query.types";
-import getIntervalDates from "../lib/getIntervalDates.lib";
-import DropdownCheckbox from "./dropdowns/dropdownCategory.component";
-import DropdownDateRange, { DATE_RANGE } from "./dropdowns/dropdownDateRage.component";
-import DropdownSortBy, { SORT_BY, sortByValues } from "./dropdowns/dropdownSortBy.component";
-import { useEffect, useState } from "react";
+import { useSearchParams } from 'react-router-dom';
+import { ArticleCategory, ENUM_ARTICLE_CATEGORY } from '../graphql/types/article.types';
+import { Query } from '../graphql/types/query.types';
+import getIntervalDates from '../lib/getIntervalDates.lib';
+import DropdownCheckbox from './dropdowns/dropdownCategory.component';
+import DropdownDateRange from './dropdowns/dropdownDateRage.component';
+import DropdownSortBy from './dropdowns/dropdownSortBy.component';
+import { useEffect, useState } from 'react';
+import { DATE_RANGE, SORT_BY, sortByValues } from '../interfaces/filterOptions.interface';
 
 interface FiltersDropdownProps {
-  listenQuery: (newQuery: Query["articles"]) => void;
+  listenQuery: (newQuery: Query['articles']) => void;
 }
 type DefaultDropdown = {
   checkboxValues: Partial<ArticleCategory>;
@@ -21,33 +22,34 @@ const FiltersDropdown: React.FC<FiltersDropdownProps> = ({ listenQuery }) => {
   const [defaultDropdown, setDefaultDropdown] = useState<DefaultDropdown>();
 
   useEffect(() => {
-    let qParam = searchParams.get("q") || "";
-    let dateRangeParam = (searchParams.get("dateRange") as DATE_RANGE) || DATE_RANGE.ALL_TIME;
+    const qParam = searchParams.get('q') || '';
+    const dateRangeParam = (searchParams.get('dateRange') as DATE_RANGE) || DATE_RANGE.ALL_TIME;
 
-    let sortParam = (searchParams.get("sort")?.toLowerCase() as SORT_BY) || SORT_BY.NEWEST;
+    let sortParam = (searchParams.get('sort')?.toLowerCase() as SORT_BY) || SORT_BY.NEWEST;
     sortParam = (sortParam.toUpperCase()[0] + sortParam.slice(1)) as SORT_BY;
 
-    let categoryParam = searchParams.get("category")?.split(",") || [];
+    let categoryParam = searchParams.get('category')?.split(',') || [];
 
     if (!categoryParam.length || !categoryParam[0]) {
       categoryParam = Object.keys(ENUM_ARTICLE_CATEGORY).filter((key) => isNaN(Number(key)));
     }
 
-    let defaultCheckboxValues = {};
+    const defaultCheckboxValues: {
+      [key: string]: boolean;
+    } = {};
 
     categoryParam.forEach((item) => {
-      // @ts-ignore
       defaultCheckboxValues[item] = true;
     });
 
     setDefaultDropdown({ sortByValues: sortParam, dateRangeValues: dateRangeParam, checkboxValues: defaultCheckboxValues });
     setSearchParams({
       ...searchParams,
-      category: categoryParam.join(","),
-      sort: sortParam as any,
+      category: categoryParam.join(','),
+      sort: sortParam,
       dateRange: dateRangeParam,
-      q: qParam as any,
-    });
+      q: qParam,
+    } as unknown as URLSearchParams);
 
     listenQuery({
       pagination: { pageSize: 4, page: 1 },
@@ -59,6 +61,8 @@ const FiltersDropdown: React.FC<FiltersDropdownProps> = ({ listenQuery }) => {
         title: { contains: qParam },
       },
     });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCheckbox = (value: Partial<ArticleCategory>) => {
@@ -66,7 +70,7 @@ const FiltersDropdown: React.FC<FiltersDropdownProps> = ({ listenQuery }) => {
       .filter((item) => item[1])
       .map((item) => item[0]);
 
-    searchParams.set("category", filterCategories.join(","));
+    searchParams.set('category', filterCategories.join(','));
     setSearchParams(searchParams);
 
     listenQuery({
@@ -80,13 +84,13 @@ const FiltersDropdown: React.FC<FiltersDropdownProps> = ({ listenQuery }) => {
 
   const handleDateRange = (value: DATE_RANGE) => {
     const dateRange = {
-      [DATE_RANGE.ALL_TIME]: { startDate: new Date("January 01, 2000 00:0:00"), endDate: new Date() },
-      [DATE_RANGE.YESTERDAY]: getIntervalDates("day"),
-      [DATE_RANGE.PAST_WEEK]: getIntervalDates("w"),
-      [DATE_RANGE.PAST_MONTH]: getIntervalDates("M"),
+      [DATE_RANGE.ALL_TIME]: { startDate: new Date('January 01, 2000 00:0:00'), endDate: new Date() },
+      [DATE_RANGE.YESTERDAY]: getIntervalDates('day'),
+      [DATE_RANGE.PAST_WEEK]: getIntervalDates('w'),
+      [DATE_RANGE.PAST_MONTH]: getIntervalDates('M'),
     };
 
-    searchParams.set("dateRange", value);
+    searchParams.set('dateRange', value);
     setSearchParams(searchParams);
 
     listenQuery({
@@ -102,7 +106,7 @@ const FiltersDropdown: React.FC<FiltersDropdownProps> = ({ listenQuery }) => {
   };
 
   const handleSortBy = (value: SORT_BY) => {
-    searchParams.set("sort", value);
+    searchParams.set('sort', value);
     setSearchParams(searchParams);
 
     listenQuery({ sort: [sortByValues[value]] });

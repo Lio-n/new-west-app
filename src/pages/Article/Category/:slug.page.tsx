@@ -1,37 +1,37 @@
-import { useParams } from "react-router-dom";
-import MainNews, { MainNewsSkeleton } from "../../../ui/organisms/mainNews.organism";
-import formatArticleData from "../../../helpers/formatArticleData.helper";
-import { ArticleEntityResponseCollection } from "../../../graphql/types/article.types";
-import { sortByValues } from "../../../components/dropdowns/dropdownSortBy.component";
-import { useQuery } from "@apollo/client";
-import { Query } from "../../../graphql/types/query.types";
-import { GET_ARTICLES } from "../../../graphql/article/GetArticles.graphql";
-import MustReadSection from "../../../ui/templates/sections/mustRead.section";
-import NavegationSubLevel from "../../../ui/atoms/navegationSubLevel.atom";
+import { useParams } from 'react-router-dom';
+import MainNews, { MainNewsSkeleton } from '../../../ui/organisms/mainNews.organism';
+import formatArticleData from '../../../helpers/formatArticleData.helper';
+import { ArticleEntityResponseCollection } from '../../../graphql/types/article.types';
+import { useQuery } from '@apollo/client';
+import { Query } from '../../../graphql/types/query.types';
+import { GET_ARTICLES } from '../../../graphql/article/GetArticles.graphql';
+import MustReadSection from '../../../ui/templates/sections/mustRead.section';
+import NavegationSubLevel from '../../../ui/atoms/navegationSubLevel.atom';
+import { sortByValues } from '../../../interfaces/filterOptions.interface';
 
 const ArticleByCategory = () => {
   // Based in the params.category value, the fetching and content should change.
   const params = useParams();
 
-  const latestResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+  const latestResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query['articles']>(GET_ARTICLES, {
     variables: {
       pagination: { pageSize: 4, page: 1 },
-      sort: [sortByValues["Newest"]],
+      sort: [sortByValues['Newest']],
       filters: {
         category: {
-          in: [params.slug || ""],
+          in: [params.slug || ''],
         },
       },
     },
   });
 
-  const mustReadResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES, {
+  const mustReadResponse = useQuery<{ articles: ArticleEntityResponseCollection }, Query['articles']>(GET_ARTICLES, {
     variables: {
       pagination: { pageSize: 4, page: 1 },
-      sort: ["views:asc"],
+      sort: ['views:asc'],
       filters: {
         category: {
-          in: [params.slug || ""],
+          in: [params.slug || ''],
         },
       },
     },
@@ -42,11 +42,11 @@ const ArticleByCategory = () => {
       <NavegationSubLevel
         levels={{
           1: {
-            text: "New West",
-            href: "/",
+            text: 'New West',
+            href: '/',
           },
           2: {
-            text: (params.slug as any as string) || "",
+            text: (params.slug as unknown as string) || '',
             href: `/article/category/${params.slug}`,
           },
         }}

@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from "react";
-import ChevronIcon from "../../ui/atoms/icons/chevron.icon";
-import Button from "../../ui/atoms/button.atom";
-
-export enum SORT_BY {
-  RELEVANCE = "Relevance",
-  NEWEST = "Newest",
-  OLDEST = "Oldest",
-}
+import React, { useEffect, useState } from 'react';
+import ChevronIcon from '../../ui/atoms/icons/chevron.icon';
+import Button from '../../ui/atoms/button.atom';
+import { SORT_BY } from '../../interfaces/filterOptions.interface';
 
 interface DropdownSortByProps {
   onChange: (value: SORT_BY) => void;
@@ -14,11 +9,6 @@ interface DropdownSortByProps {
 }
 
 const sortingOptions = [SORT_BY.RELEVANCE, SORT_BY.NEWEST, SORT_BY.OLDEST];
-export const sortByValues = {
-  [SORT_BY.NEWEST]: "publishedAt:asc",
-  [SORT_BY.OLDEST]: "publishedAt:desc",
-  [SORT_BY.RELEVANCE]: "views:asc, claps:asc",
-};
 
 const DropdownSortBy: React.FC<DropdownSortByProps> = ({ onChange, defaultValues = SORT_BY.NEWEST }) => {
   // State to manage selected sort option
@@ -41,8 +31,9 @@ const DropdownSortBy: React.FC<DropdownSortByProps> = ({ onChange, defaultValues
           <Button
             onClick={() => handleOptionSelect(option)}
             className={`block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-chinese-blue-100 dark:hover:text-white ${
-              selectedOption === option ? "bg-gray-100 dark:bg-chinese-blue-100 dark:text-white" : ""
-            }`}>
+              selectedOption === option ? 'bg-gray-100 dark:bg-chinese-blue-100 dark:text-white' : ''
+            }`}
+          >
             {option}
           </Button>
         </li>
@@ -57,7 +48,8 @@ const DropdownSortBy: React.FC<DropdownSortByProps> = ({ onChange, defaultValues
         id="dropdownSortBy"
         data-dropdown-toggle="dropdownDefaultRadio"
         className="text-slate-700 hover:text-slate-500 font-medium text-sm p-2.5 text-center inline-flex items-center"
-        type="button">
+        type="button"
+      >
         Sort By
         <ChevronIcon className="w-2.5 h-2.5 ms-3" />
       </Button>

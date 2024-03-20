@@ -1,7 +1,7 @@
-import { MockedResponse } from "@apollo/client/testing";
-import { GET_ARTICLES, GET_ARTICLES_WITHOUT_DESCRIPTION } from "../../../graphql/article/GetArticles.graphql";
-import { MockArticleItemOne, MockArticleItemTwo } from "./ArticleItem.mock";
-import { SORT_BY, sortByValues } from "../../../components/dropdowns/dropdownSortBy.component";
+import { MockedResponse } from '@apollo/client/testing';
+import { GET_ARTICLES, GET_ARTICLES_WITHOUT_DESCRIPTION } from '../../../graphql/article/GetArticles.graphql';
+import { MockArticleItemOne, MockArticleItemTwo } from './ArticleItem.mock';
+import { SORT_BY, sortByValues } from '../../../interfaces/filterOptions.interface';
 
 const MockQueryDefaultResponse = {
   request: {
@@ -15,34 +15,34 @@ const MockQueryDefaultResponse = {
       articles: {
         data: [
           {
-            id: "1",
+            id: '1',
             attributes: MockArticleItemOne,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "2",
+            id: '2',
             attributes: MockArticleItemOne,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "3",
+            id: '3',
             attributes: MockArticleItemOne,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "4",
+            id: '4',
             attributes: MockArticleItemOne,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "5",
+            id: '5',
             attributes: MockArticleItemOne,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "6",
+            id: '6',
             attributes: MockArticleItemOne,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
         ],
         meta: {
@@ -51,11 +51,11 @@ const MockQueryDefaultResponse = {
             pageCount: 3,
             pageSize: 2,
             total: 6,
-            __typename: "Pagination",
+            __typename: 'Pagination',
           },
-          __typename: "ResponseCollectionMeta",
+          __typename: 'ResponseCollectionMeta',
         },
-        __typename: "ArticleEntityResponseCollection",
+        __typename: 'ArticleEntityResponseCollection',
       },
     },
   },
@@ -74,24 +74,24 @@ const MockQuerySortNewest = {
       articles: {
         data: [
           {
-            id: "1",
+            id: '1',
             attributes: MockArticleItemTwo,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "2",
+            id: '2',
             attributes: MockArticleItemTwo,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "3",
+            id: '3',
             attributes: MockArticleItemTwo,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "4",
+            id: '4',
             attributes: MockArticleItemTwo,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
         ],
         meta: {
@@ -100,11 +100,11 @@ const MockQuerySortNewest = {
             pageCount: 1,
             pageSize: 10,
             total: 4,
-            __typename: "Pagination",
+            __typename: 'Pagination',
           },
-          __typename: "ResponseCollectionMeta",
+          __typename: 'ResponseCollectionMeta',
         },
-        __typename: "ArticleEntityResponseCollection",
+        __typename: 'ArticleEntityResponseCollection',
       },
     },
   },
@@ -123,29 +123,29 @@ const MockQuerySortRelevance = {
       articles: {
         data: [
           {
-            id: "1",
+            id: '1',
             attributes: MockArticleItemTwo,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "2",
+            id: '2',
             attributes: MockArticleItemTwo,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "3",
+            id: '3',
             attributes: MockArticleItemTwo,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "4",
+            id: '4',
             attributes: MockArticleItemTwo,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "5",
+            id: '5',
             attributes: MockArticleItemTwo,
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
         ],
         meta: {
@@ -154,11 +154,11 @@ const MockQuerySortRelevance = {
             pageCount: 1,
             pageSize: 10,
             total: 5,
-            __typename: "Pagination",
+            __typename: 'Pagination',
           },
-          __typename: "ResponseCollectionMeta",
+          __typename: 'ResponseCollectionMeta',
         },
-        __typename: "ArticleEntityResponseCollection",
+        __typename: 'ArticleEntityResponseCollection',
       },
     },
   },
@@ -168,11 +168,11 @@ const MockQuerySortRelevanceWithoutDescription = {
   request: {
     query: GET_ARTICLES_WITHOUT_DESCRIPTION,
     variables: {
-      sort: ["publishedAt:asc"],
+      sort: ['publishedAt:asc'],
       pagination: { pageSize: 4, page: 1 },
       filters: {
-        category: { in: ["Business", "Entertainment", "Health", "Opinion", "Politics", "Sports", "Travel", "World"] },
-        title: { contains: "" },
+        category: { in: ['Business', 'Entertainment', 'Health', 'Opinion', 'Politics', 'Sports', 'Travel', 'World'] },
+        title: { contains: '' },
       },
     },
   },
@@ -181,24 +181,24 @@ const MockQuerySortRelevanceWithoutDescription = {
       articles: {
         data: [
           {
-            id: "1",
+            id: '1',
             attributes: { ...MockArticleItemTwo, description: null },
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "2",
+            id: '2',
             attributes: { ...MockArticleItemTwo, description: null },
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "3",
+            id: '3',
             attributes: { ...MockArticleItemTwo, description: null },
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
           {
-            id: "4",
+            id: '4',
             attributes: { ...MockArticleItemTwo, description: null },
-            __typename: "ArticleEntity",
+            __typename: 'ArticleEntity',
           },
         ],
         meta: {
@@ -207,11 +207,11 @@ const MockQuerySortRelevanceWithoutDescription = {
             pageCount: 2,
             pageSize: 4,
             total: 8,
-            __typename: "Pagination",
+            __typename: 'Pagination',
           },
-          __typename: "ResponseCollectionMeta",
+          __typename: 'ResponseCollectionMeta',
         },
-        __typename: "ArticleEntityResponseCollection",
+        __typename: 'ArticleEntityResponseCollection',
       },
     },
   },
@@ -235,11 +235,11 @@ const MockQuerySortRelevanceWithoutDescriptionPageCountTwo = {
             pageCount: 2,
             pageSize: 4,
             total: 8,
-            __typename: "Pagination",
+            __typename: 'Pagination',
           },
-          __typename: "ResponseCollectionMeta",
+          __typename: 'ResponseCollectionMeta',
         },
-        __typename: "ArticleEntityResponseCollection",
+        __typename: 'ArticleEntityResponseCollection',
       },
     },
   },
@@ -250,7 +250,7 @@ const MockQuerySortMustRead = {
     query: GET_ARTICLES,
     variables: {
       pagination: { pageSize: 4, page: 1 },
-      sort: ["views:asc"], // Relevance
+      sort: ['views:asc'], // Relevance
     },
   },
   result: MockQuerySortNewest.result,
@@ -262,7 +262,7 @@ const MockQuerySortMustReadCategoryPolitics = {
     variables: {
       pagination: { pageSize: 4, page: 1 },
       sort: [sortByValues[SORT_BY.RELEVANCE]], // Relevance
-      filters: { category: { in: ["Politics"] }, title: { contains: "" } }, // Politics
+      filters: { category: { in: ['Politics'] }, title: { contains: '' } }, // Politics
     },
   },
   result: {
@@ -270,24 +270,24 @@ const MockQuerySortMustReadCategoryPolitics = {
       articles: {
         data: [
           {
-            id: "1",
-            attributes: { ...MockArticleItemTwo, description: "Politics" },
-            __typename: "ArticleEntity",
+            id: '1',
+            attributes: { ...MockArticleItemTwo, description: 'Politics' },
+            __typename: 'ArticleEntity',
           },
           {
-            id: "2",
-            attributes: { ...MockArticleItemTwo, description: "Politics" },
-            __typename: "ArticleEntity",
+            id: '2',
+            attributes: { ...MockArticleItemTwo, description: 'Politics' },
+            __typename: 'ArticleEntity',
           },
           {
-            id: "3",
-            attributes: { ...MockArticleItemTwo, description: "Politics" },
-            __typename: "ArticleEntity",
+            id: '3',
+            attributes: { ...MockArticleItemTwo, description: 'Politics' },
+            __typename: 'ArticleEntity',
           },
           {
-            id: "4",
-            attributes: { ...MockArticleItemTwo, description: "Politics" },
-            __typename: "ArticleEntity",
+            id: '4',
+            attributes: { ...MockArticleItemTwo, description: 'Politics' },
+            __typename: 'ArticleEntity',
           },
         ],
         meta: {
@@ -296,11 +296,11 @@ const MockQuerySortMustReadCategoryPolitics = {
             pageCount: 2,
             pageSize: 4,
             total: 8,
-            __typename: "Pagination",
+            __typename: 'Pagination',
           },
-          __typename: "ResponseCollectionMeta",
+          __typename: 'ResponseCollectionMeta',
         },
-        __typename: "ArticleEntityResponseCollection",
+        __typename: 'ArticleEntityResponseCollection',
       },
     },
   },
@@ -312,7 +312,7 @@ const MockQuerySortNewestCategoryPolitics = {
     variables: {
       pagination: { pageSize: 4, page: 1 },
       sort: [sortByValues[SORT_BY.NEWEST]], // Newest
-      filters: { category: { in: ["Politics"] } }, // Politics
+      filters: { category: { in: ['Politics'] } }, // Politics
     },
   },
   result: MockQuerySortNewest.result,

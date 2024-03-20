@@ -1,19 +1,22 @@
-import { ParsedArticleEntityResponseCollection } from "../../helpers/formatArticleData.helper";
-import ArticleCardPrimary, { ArticleCardPrimarySkeleton } from "../molecules/articleCardPrimary.molecule";
-import ArticleCardSmall, { ArticleCardSmallSkeleton } from "../molecules/articleCardSmall.molecule";
+import { ParsedArticleEntityResponseCollection } from '../../helpers/formatArticleData.helper';
+import ArticleCardPrimary, { ArticleCardPrimarySkeleton } from '../molecules/articleCardPrimary.molecule';
+import ArticleCardSmall, { ArticleCardSmallSkeleton } from '../molecules/articleCardSmall.molecule';
 
 interface MainNewsProps extends React.HTMLAttributes<HTMLDivElement> {
   data: ParsedArticleEntityResponseCollection;
 }
 
-const MainNews: React.FC<MainNewsProps> = ({ data, className = "", ...props }) => {
+const MainNews: React.FC<MainNewsProps> = ({ data, className = '', ...props }) => {
   const SmallArticlesList = () => (
     <ul className="grid gap-4 content-between">
-      {data.data.slice(1).map(({ attributes: { description, ...item } }, index) => (
-        <li key={index} className="h-fit">
-          <ArticleCardSmall data={item} />
-        </li>
-      ))}
+      {data.data.slice(1).map(
+        // eslint-disable-next-line
+        ({ attributes: { description, ...item } }, index) => (
+          <li key={index} className="h-fit">
+            <ArticleCardSmall data={item} />
+          </li>
+        )
+      )}
     </ul>
   );
 
