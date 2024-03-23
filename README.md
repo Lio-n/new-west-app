@@ -17,12 +17,17 @@ _Discover the World of Tomorrow._
 
 ### The Product
 
-.NewWest is an information platform that presents itself as an innovative news source, offering a fresh and modern perspective on current events. With a focus on innovation and exploring new frontiers, NewWest seeks to be a trusted destination for those seeking to discover and understand the ever-evolving world around us.
+NewWest is an information platform that presents itself as an innovative news source, offering a fresh and modern perspective on current events. With a focus on innovation and exploring new frontiers, NewWest seeks to be a trusted destination for those seeking to discover and understand the ever-evolving world around us.
 
 ### Screenshot
 
-<div style="text-align:center"><img src="public/screenshots/desktop.png" /></div>
-<div style="text-align:center"><img src="public/screenshots/mobile.png" /></div>
+<p align="center">
+  <img src="public/screenshots/desktop.png" alt="Desktop"/>
+</p>
+
+<p align="center">
+  <img src="public/screenshots/mobile.png" alt="Mobile"/>
+</p>
 
 ### Links
 
