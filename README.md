@@ -1,265 +1,59 @@
-# React + TypeScript + Vite
+# New West
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+_Discover the World of Tomorrow._
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [Product](#the-product)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Technical instructions](#technical-instructions)
+- [Author](#author)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### The Product
 
-- Configure the top-level `parserOptions` property like this:
+.NewWest is an information platform that presents itself as an innovative news source, offering a fresh and modern perspective on current events. With a focus on innovation and exploring new frontiers, NewWest seeks to be a trusted destination for those seeking to discover and understand the ever-evolving world around us.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+### Screenshot
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-  import { MockedResponse } from "@apollo/client/testing";
-  import { GET_ARTICLES, GET_ARTICLES_WITHOUT_DESCRIPTION } from "../../../graphql/article/GetArticles.graphql";
-  import { MockArticleItemOne, MockArticleItemTwo } from "./ArticleItem.mock";
-  import { SORT_BY, sortByValues } from "../../../components/dropdowns/dropdownSortBy.component";
-  import { Categories } from "../../../constants/categories.constant";
+<div style="text-align:center"><img src="public/screenshots/desktop.png" /></div>
+<div style="text-align:center"><img src="public/screenshots/mobile.png" /></div>
 
-const generateListItems = (length: number, typeArticleItem: "one" | "two", hasDescription: boolean = true) => {
-let arrayItems: any = {
-data: [],
-};
+### Links
 
-let itemSelected = typeArticleItem === "one" ? MockArticleItemOne : MockArticleItemTwo;
+- Figma Design URL: [NewWest Design](https://www.figma.com/file/B5AyrHZCGz4vAu8ypm98Qt/NewWest?type=design&node-id=0%3A1&mode=design&t=zEqApxUmfTimHMP8-1)
+- Solution URL: [Github Repository : new-west-app](https://github.com/Lio-n/new-west-app)
+- Live Site URL: [Vercel](/#)
 
-if (!hasDescription) {
-itemSelected = { ...itemSelected, description: null as any };
-}
+## My process
 
-for (let i = 1; i < length + 1; i++) {
-arrayItems.data.push({
-id: i.toString(),
-attributes: itemSelected,
-\_\_typename: "ArticleEntity",
-});
-}
+### Built with
 
-return arrayItems;
-};
+✅ [Vite.Js](https://vitejs.dev/) --> To streamline the development process by providing a fast, efficient, and developer-friendly build tooling solution.<br/>
+✅ [Graphql](https://graphql.org/) --> provides a more efficient, flexible, and powerful way to build and consume APIs.<br/>
+✅ [React.Js](https://react.dev/) --> To create robust user interfaces.<br/>
+✅ [Typescript](https://www.typescriptlang.org/) --> Due to its static typing.<br/>
+✅ [Vercel](https://vercel.com/docs) --> To deploy the project.<br/>
+✅ [Tailwindcss](https://tailwindcss.com/) --> To streamline the process of building and styling user interfaces.<br/>
+✅ [Dayjs](https://day.js.org/) --> A lightweight and modern JavaScript library for parsing, manipulating, and formatting dates and times.<br/>
+✅ [ESLint](https://eslint.org/) --> To enforce coding standards, detect potential errors, and ensure code consistency across a codebase.<br/>
+✅ [apollo/client](https://www.apollographql.com/docs/react/) --> Simplifies the process of working with GraphQL.
 
-const MockQueryDefaultResponse = {
-request: {
-query: GET_ARTICLES,
-variables: {
-sort: [],
-},
-},
-result: {
-data: {
-articles: {
-...generateListItems(6, "one"),
-meta: {
-pagination: {
-page: 1,
-pageCount: 3,
-pageSize: 2,
-total: 6,
-**typename: "Pagination",
-},
-**typename: "ResponseCollectionMeta",
-},
-\_\_typename: "ArticleEntityResponseCollection",
-},
-},
-},
-};
+## Technical instructions
 
-const MockQuerySortNewest = {
-request: {
-query: GET_ARTICLES,
-variables: {
-pagination: { pageSize: 4, page: 1 },
-sort: [sortByValues[SORT_BY.NEWEST]], // Newest
-},
-},
-result: {
-data: {
-articles: {
-...generateListItems(4, "one"),
-meta: {
-pagination: {
-page: 1,
-pageCount: 1,
-pageSize: 4,
-total: 4,
-**typename: "Pagination",
-},
-**typename: "ResponseCollectionMeta",
-},
-\_\_typename: "ArticleEntityResponseCollection",
-},
-},
-},
-};
+| Command         | Action performed                                                  |
+| :-------------- | :---------------------------------------------------------------- |
+| `npm install`   | Install all dependencies                                          |
+| `npm run dev`   | Start a development server at `localhost:5173`                    |
+| `npm run build` | Make the production build in `./dist/`                            |
+| `npm run start` | To preview the build before deploying, server at `localhost:4173` |
+| `npm run lint`  | Run ESLint to lint TypeScript and TypeScript files                |
 
-const MockQuerySortRelevance = {
-request: {
-query: GET_ARTICLES,
-variables: {
-pagination: { pageSize: 5, page: 1 },
-sort: [sortByValues[SORT_BY.RELEVANCE]], // Relevance
-},
-},
-result: {
-data: {
-articles: {
-...generateListItems(5, "two"),
-meta: {
-pagination: {
-page: 1,
-pageCount: 1,
-pageSize: 5,
-total: 5,
-**typename: "Pagination",
-},
-**typename: "ResponseCollectionMeta",
-},
-\_\_typename: "ArticleEntityResponseCollection",
-},
-},
-},
-};
+## 👥 Authors
 
-const MockQuerySortRelevanceWithoutDescription = {
-request: {
-query: GET_ARTICLES_WITHOUT_DESCRIPTION,
-variables: {
-sort: ["publishedAt:asc"],
-pagination: { pageSize: 4, page: 1 },
-filters: {
-category: { in: Categories },
-title: { contains: "" },
-},
-},
-},
-result: {
-data: {
-articles: {
-...generateListItems(4, "two", false),
-meta: {
-pagination: {
-page: 1,
-pageCount: 2,
-pageSize: 4,
-total: 8,
-**typename: "Pagination",
-},
-**typename: "ResponseCollectionMeta",
-},
-\_\_typename: "ArticleEntityResponseCollection",
-},
-},
-},
-};
-
-const MockQuerySortRelevanceWithoutDescriptionPageCountTwo = {
-request: {
-query: GET_ARTICLES_WITHOUT_DESCRIPTION,
-variables: {
-...MockQuerySortRelevanceWithoutDescription.request.variables,
-pagination: { pageSize: 4, page: 2 },
-},
-},
-result: {
-data: {
-articles: {
-data: MockQuerySortRelevanceWithoutDescription.result.data.articles.data,
-meta: {
-pagination: {
-page: 2,
-pageCount: 2,
-pageSize: 4,
-total: 8,
-**typename: "Pagination",
-},
-**typename: "ResponseCollectionMeta",
-},
-\_\_typename: "ArticleEntityResponseCollection",
-},
-},
-},
-};
-
-const MockQuerySortMustRead = {
-request: {
-query: GET_ARTICLES,
-variables: {
-pagination: { pageSize: 4, page: 1 },
-sort: ["views:asc"], // Relevance
-},
-},
-result: MockQuerySortNewest.result,
-};
-
-const MockQuerySortMustReadCategoryPolitics = {
-request: {
-query: GET_ARTICLES_WITHOUT_DESCRIPTION,
-variables: {
-pagination: { pageSize: 4, page: 1 },
-sort: [sortByValues[SORT_BY.RELEVANCE]], // Relevance
-filters: { category: { in: ["Politics"] }, title: { contains: "" } }, // Politics
-},
-},
-result: {
-data: {
-articles: {
-...generateListItems(4, "one"),
-meta: {
-pagination: {
-page: 1,
-pageCount: 2,
-pageSize: 4,
-total: 8,
-**typename: "Pagination",
-},
-**typename: "ResponseCollectionMeta",
-},
-\_\_typename: "ArticleEntityResponseCollection",
-},
-},
-},
-};
-
-const MockQuerySortNewestCategoryPolitics = {
-request: {
-query: GET_ARTICLES,
-variables: {
-pagination: { pageSize: 4, page: 1 },
-sort: [sortByValues[SORT_BY.NEWEST]], // Newest
-filters: { category: { in: ["Politics"] } }, // Politics
-},
-},
-result: MockQuerySortNewest.result,
-};
-
-const MockGetArticles: MockedResponse[] = [
-MockQueryDefaultResponse,
-MockQuerySortNewest,
-MockQuerySortRelevance,
-MockQuerySortRelevanceWithoutDescription,
-MockQuerySortRelevanceWithoutDescriptionPageCountTwo,
-MockQuerySortMustRead,
-MockQuerySortMustReadCategoryPolitics,
-MockQuerySortNewestCategoryPolitics,
-];
-
-export default MockGetArticles;
+- 👨🏻‍💻 [Leonardo Fontan](https://github.com/Lio-n)
