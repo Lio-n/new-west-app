@@ -1,2 +1,2 @@
-const Brand = () => <img src="/NewWest_logo.svg" alt="Logo.svg" width={54} height={54} />;
+const Brand = ({ className }: { className?: string }) => <img src="/NewWest_logo.svg" alt="Logo.svg" className={`w-14 h-14 ${className}`} />;
 export default Brand;

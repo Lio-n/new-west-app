@@ -7,7 +7,6 @@
     { "text": "Entertainment", "href": "/article/category/Entertainment" },
     { "text": "Travel", "href": "/article/category/Travel" },
     { "text": "Sports", "href": "/article/category/Sports" },
-    { "text": "Health", "href": "/article/category/Health" },
-    { "text": "About Us", "href": "/About Us" }
+    { "text": "Health", "href": "/article/category/Health" }
   ]
 }

@@ -1,12 +1,12 @@
-import { useState } from "react";
-import MenuNavegationLinks from "../../ui/molecules/menuNavegationLinks.molecule";
-import HeaderInfo from "../../data/Header.data.json";
-import XMarkIcon from "../../ui/atoms/icons/x-mark.icon";
-import BarsThreeIcon from "../../ui/atoms/icons/barsThree.icon";
-import Button from "../../ui/atoms/button.atom";
-import MagnifyingGlassIcon from "../../ui/atoms/icons/magnifying-glass.icon";
-import Brand from "../../ui/atoms/brand.atom";
-import NavegationLink from "../../ui/atoms/navegationLink.atom";
+import { useState } from 'react';
+import MenuNavegationLinks from '../../ui/molecules/menuNavegationLinks.molecule';
+import HeaderInfo from '../../data/Header.data.json';
+import XMarkIcon from '../../ui/atoms/icons/x-mark.icon';
+import BarsThreeIcon from '../../ui/atoms/icons/barsThree.icon';
+import Button from '../../ui/atoms/button.atom';
+import MagnifyingGlassIcon from '../../ui/atoms/icons/magnifying-glass.icon';
+import Brand from '../../ui/atoms/brand.atom';
+import NavegationLink from '../../ui/atoms/navegationLink.atom';
 
 const MobileHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +15,10 @@ const MobileHeader = () => {
   const DropMenu = () => (
     <div
       className={`overflow-auto w-full transition-opacity duration-300 ease-in ${
-        isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-      } absolute w-full bg-chinese-blue-400 p-4`}>
-      <MenuNavegationLinks direction="vertical" data={HeaderInfo.navLinks} />
+        isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      } absolute w-full bg-chinese-blue-400 p-4`}
+    >
+      <MenuNavegationLinks direction="vertical" data={[...HeaderInfo.navLinks, { text: 'About Us', href: '/About Us' }]} />
     </div>
   );
 
@@ -36,7 +37,7 @@ const MobileHeader = () => {
   );
 
   return (
-    <div className={`w-full bg-chinese-blue-400`}>
+    <div className={`max-w-screen-2xl mx-auto`}>
       <HeaderContent />
       <DropMenu />
     </div>
