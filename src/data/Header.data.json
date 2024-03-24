@@ -1,0 +1,12 @@
+{
+  "navLinks": [
+    { "text": "World", "href": "/article/category/World" },
+    { "text": "Politics", "href": "/article/category/Politics" },
+    { "text": "Business", "href": "/article/category/Business" },
+    { "text": "Opinion", "href": "/article/category/Opinion" },
+    { "text": "Entertainment", "href": "/article/category/Entertainment" },
+    { "text": "Travel", "href": "/article/category/Travel" },
+    { "text": "Sports", "href": "/article/category/Sports" },
+    { "text": "Health", "href": "/article/category/Health" }
+  ]
+}

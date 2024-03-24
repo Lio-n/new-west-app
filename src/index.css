@@ -1,5 +1,15 @@
 @tailwind base;
 @tailwind utilities;
+@tailwind components;
+
+@layer components {
+  .divider-solid {
+    border-width: 1px;
+    border-color: theme("colors.slate.200");
+    margin-top: theme("spacing.8");
+    margin-bottom: theme("spacing.8");
+  }
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -7,7 +17,6 @@
   font-weight: 400;
 
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,4 +28,29 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+}
+main {
+  min-height: 100vh;
+}
+
+.smooth-transition {
+  transition: font-size 0.3s ease-in-out;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(75ch, calc(100% - 32px))
+    1fr;
+  grid-row-gap: 1rem;
+}
+
+.wrapper > .full-bleed {
+  width: 100%;
+  grid-column: 1/4;
+}
+
+.wrapper > * {
+  grid-column: 2;
 }
