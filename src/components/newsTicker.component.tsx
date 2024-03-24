@@ -1,15 +1,18 @@
-import { useMediaQuery } from "@uidotdev/usehooks";
-import DotIcon from "../ui/atoms/icons/dot.icon";
-import Phrase from "../ui/atoms/typographies/phrase.atom";
-import MediaQueryInfo from "../constants/mediaQuery.constant.json";
+import { useMediaQuery } from '@uidotdev/usehooks';
+import DotIcon from '../ui/atoms/icons/dot.icon';
+import Phrase from '../ui/atoms/typographies/phrase.atom';
+import MediaQueryInfo from '../constants/mediaQuery.constant.json';
+import { Link } from 'react-router-dom';
+import { NewsTrikerInfo } from '../interfaces/newsTriker.interface';
 
-const NewsList = ({ data }: { data: string[] }) => {
+const NewsList = ({ data }: { data: NewsTrikerInfo[] }) => {
   return (
     <div className="overflow-hidden">
       <ul className="animate-marquee_ms md:animate-marquee_md flex whitespace-nowrap">
         {data.map((item, index) => (
           <li key={index} className="whitespace-nowrap flex items-center">
-            <Phrase>{item}</Phrase>
+            <Link to={`/article/${item.id}`} children={<Phrase>{item.title}</Phrase>} />
+
             {data.length - 1 !== index ? <DotIcon className="mx-4 h-[8px] w-[8px] bg-blueberry-600" /> : <></>}
           </li>
         ))}
@@ -18,7 +21,7 @@ const NewsList = ({ data }: { data: string[] }) => {
   );
 };
 
-const NewsTicker = ({ data }: { data: string[] }) => {
+const NewsTicker = ({ data }: { data: NewsTrikerInfo[] }) => {
   const isSmallDevice = useMediaQuery(MediaQueryInfo.max.sm);
 
   const content = isSmallDevice ? data.slice(0, 2) : data.slice(0, 4);

@@ -1,11 +1,11 @@
-import HeadingSection from "../../molecules/headingSection.molecule";
-import ArticleCardMid, { ArticleCardMidSkeleton } from "../../molecules/articleCardMid.molecule";
-import { ParsedArticleEntityResponseCollection } from "../../../helpers/formatArticleData.helper";
+import HeadingSection from '../../molecules/headingSection.molecule';
+import ArticleCardMid, { ArticleCardMidSkeleton } from '../../molecules/articleCardMid.molecule';
+import { ParsedArticleEntityResponseCollection } from '../../../helpers/formatArticleData.helper';
 
-const LatestSection: React.FC<{ articles: ParsedArticleEntityResponseCollection; isLoading: boolean }> = ({ articles, isLoading }) => {
+const LatestSection: React.FC<{ articles: ParsedArticleEntityResponseCollection | undefined; isLoading: boolean }> = ({ articles, isLoading }) => {
   const MidArticlesList = () => (
     <ul className="flex gap-4 flex-wrap justify-center">
-      {articles.data.map((item, index) => (
+      {articles?.data.map((item, index) => (
         <li key={index} className="h-fit sm:max-w-45 2xl:max-w-24">
           <ArticleCardMid data={item.attributes} />
         </li>
@@ -23,10 +23,10 @@ const LatestSection: React.FC<{ articles: ParsedArticleEntityResponseCollection;
 
   return (
     <div className="my-8 mx-auto max-w-screen-2xl">
-      <HeadingSection title={"Latest news"} href={"/article/search/?sort=Newest&dateRange=ALL_TIME"} className="px-4 mb-8" />
+      <HeadingSection title={'Latest news'} href={'/article/search/?sort=Newest&dateRange=ALL_TIME'} className="px-4 mb-8" />
 
       {isLoading && <MidArticlesListSkeleton />}
-      {!isLoading && articles.data.length && <MidArticlesList />}
+      {!isLoading && articles?.data.length && <MidArticlesList />}
     </div>
   );
 };
