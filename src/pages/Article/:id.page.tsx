@@ -28,7 +28,7 @@ const ArticleById = () => {
 
   const byIdResponse = useQuery<{ article: { data: ArticleEntity } }, Query['article']>(GET_ARTICLE_BY_ID, {
     variables: {
-      id: params.id || null,
+      articleId: params.id || null,
     },
   });
 
@@ -42,41 +42,41 @@ const ArticleById = () => {
   return (
     <div className="py-24 lg:py-36 md:px-4 xl:px-8">
       {byIdResponse.loading && <BlocksRenderSkeleton />}
-      {byIdResponse.data?.article.data.attributes && (
-        <div className="wrapper">
+      <div className="wrapper">
+        {byIdResponse.data?.article.data.attributes && (
           <>
-            <Body>{byIdResponse.data?.article.data.attributes.description}</Body>
-
-            {byIdResponse.data.article.data.attributes.cover.data && (
-              <div className="full-bleed drop-shadow-xl">
-                <PictureSource
-                  sources={byIdResponse.data.article.data.attributes.cover.data.attributes}
-                  className="md:rounded-lg max-h-96 min-h-60"
-                />
-              </div>
-            )}
-            <Header
-              category={byIdResponse.data?.article.data.attributes.category}
-              title={byIdResponse.data?.article.data.attributes.title}
-              publishedAt={byIdResponse.data?.article.data.attributes.publishedAt}
-              readingTime={byIdResponse.data?.article.data.attributes.readingTime}
-            />
-          </>
-
-          <article className="grid gap-4">
-            <BlocksRender content={byIdResponse.data?.article.data.attributes.body} />
-          </article>
-
-          <div className="divider-solid" />
-
-          {topStoriesResponse.data?.articles.data && (
             <>
-              <TopStories articles={formatArticleData(topStoriesResponse.data?.articles)} />
-              <div className="divider-solid" />
+              <Body>{byIdResponse.data?.article.data.attributes.description}</Body>
+
+              {byIdResponse.data.article.data.attributes.cover.data && (
+                <div className="full-bleed drop-shadow-xl">
+                  <PictureSource
+                    sources={byIdResponse.data.article.data.attributes.cover.data.attributes}
+                    className="md:rounded-lg max-h-96 min-h-60"
+                  />
+                </div>
+              )}
+              <Header
+                category={byIdResponse.data?.article.data.attributes.category}
+                title={byIdResponse.data?.article.data.attributes.title}
+                publishedAt={byIdResponse.data?.article.data.attributes.publishedAt}
+                readingTime={byIdResponse.data?.article.data.attributes.readingTime}
+              />
             </>
-          )}
-        </div>
-      )}
+            <article className="grid gap-4">
+              <BlocksRender content={byIdResponse.data?.article.data.attributes.body} />
+            </article>
+
+            <div className="divider-solid" />
+          </>
+        )}
+        {topStoriesResponse.data?.articles.data && (
+          <>
+            <TopStories articles={formatArticleData(topStoriesResponse.data?.articles)} />
+            <div className="divider-solid" />
+          </>
+        )}
+      </div>
     </div>
   );
 };

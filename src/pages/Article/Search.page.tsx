@@ -1,34 +1,33 @@
-import SearchForm from "../../components/searchForm.component";
-import Body from "../../ui/atoms/typographies/body.atom";
-import { useQuery } from "@apollo/client";
-import { GET_ARTICLES_WITHOUT_DESCRIPTION } from "../../graphql/article/GetArticles.graphql";
-import { ArticleEntityResponseCollection } from "../../graphql/types/article.types";
-import { Query } from "../../graphql/types/query.types";
-import { useState } from "react";
-import ArticleCardSmall, { ArticleCardSmallSkeleton } from "../../ui/molecules/articleCardSmall.molecule";
-import formatArticleData from "../../helpers/formatArticleData.helper";
-import { useSearchParams } from "react-router-dom";
-import Pagination from "../../ui/molecules/pagination.molecule";
-import FiltersDropdown from "../../components/filtersDropdown.component";
+import SearchForm from '../../components/searchForm.component';
+import Body from '../../ui/atoms/typographies/body.atom';
+import { useQuery } from '@apollo/client';
+import { GET_ARTICLES_WITHOUT_DESCRIPTION } from '../../graphql/article/GetArticles.graphql';
+import { ArticleEntityResponseCollection } from '../../graphql/types/article.types';
+import { Query } from '../../graphql/types/query.types';
+import { useState } from 'react';
+import ArticleCardSmall, { ArticleCardSmallSkeleton } from '../../ui/molecules/articleCardSmall.molecule';
+import formatArticleData from '../../helpers/formatArticleData.helper';
+import { useSearchParams } from 'react-router-dom';
+import Pagination from '../../ui/molecules/pagination.molecule';
+import FiltersDropdown from '../../components/filtersDropdown.component';
 
 const SearchArticlePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState<Query["articles"]>();
-  const { loading, error, data } = useQuery<{ articles: ArticleEntityResponseCollection }, Query["articles"]>(GET_ARTICLES_WITHOUT_DESCRIPTION, {
+  const [query, setQuery] = useState<Query['articles']>();
+  const { loading, error, data } = useQuery<{ articles: ArticleEntityResponseCollection }, Query['articles']>(GET_ARTICLES_WITHOUT_DESCRIPTION, {
     variables: query,
   });
-  console.log(`🚀 ~ { loading, error, data }:`, { loading, error, data });
 
   const handleListenQuery = (searchText: string) => {
     // If the value is the same, avoid to update the query state.
     if (searchText !== query?.filters?.title?.contains) {
-      searchParams.set("q", searchText);
+      searchParams.set('q', searchText);
       setSearchParams(searchParams);
       setQuery({ ...query, filters: { ...query?.filters, title: { contains: searchText } } });
     }
   };
 
-  const handleFiltersQuery = (newQuery: Query["articles"]) => setQuery({ ...query, ...newQuery });
+  const handleFiltersQuery = (newQuery: Query['articles']) => setQuery({ ...query, ...newQuery });
 
   const handlePageChange = (value: number) =>
     setQuery({

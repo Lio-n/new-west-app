@@ -1,4 +1,4 @@
-import { ArticleFiltersInput } from "./article.types";
+import { ArticleFiltersInput } from './article.types';
 
 interface FilterCore<BASE> {
   and: BASE[];
@@ -59,7 +59,7 @@ export enum PublicationState {
 export interface Query {
   article: {
     // args
-    id: string | number | null;
+    articleId: string | number | null;
   };
   articles: {
     // args
