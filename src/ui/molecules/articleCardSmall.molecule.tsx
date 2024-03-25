@@ -1,16 +1,16 @@
-import { Link, LinkProps } from "react-router-dom";
-import { UploadFileEntityResponse } from "../../graphql/types/uploadFile.types";
-import PictureSource from "../atoms/pictureSource.atom";
-import ImgSkeleton from "../atoms/skeleton/img.skeleton";
-import ArticleDetails, { ArticleDetailsItem, ArticleDetailsSkeleton } from "./articleDetails.molecule";
+import { Link, LinkProps } from 'react-router-dom';
+import { UploadFileEntityResponse } from '../../graphql/types/uploadFile.types';
+import PictureSource from '../atoms/pictureSource.atom';
+import ImgSkeleton from '../atoms/skeleton/img.skeleton';
+import ArticleDetails, { ArticleDetailsItem, ArticleDetailsSkeleton } from './articleDetails.molecule';
 
 interface ArticleCardSmallProps extends Partial<LinkProps>, React.RefAttributes<HTMLAnchorElement> {
   data: ArticleDetailsItem & { href: string; cover: Partial<UploadFileEntityResponse> };
 }
 
-const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, className = "", ...props }) => {
+const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, className = '', ...props }) => {
   return (
-    <Link {...props} to={data.href} className={`grid grid-rows-[70%,30%] sm:grid-cols-[30%,70%] group sm:w-fit ${className}`}>
+    <Link {...props} to={data.href} className={`h-full w-full grid grid-rows-[70%,30%] sm:grid-rows-[1fr] sm:grid-cols-[30%,70%] group ${className}`}>
       {data.cover.data?.attributes && (
         <PictureSource sources={data.cover.data?.attributes} className="sm:rounded-tr-lg sm:rounded-br-lg md:rounded-lg" />
       )}

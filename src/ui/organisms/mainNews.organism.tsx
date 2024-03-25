@@ -8,11 +8,11 @@ interface MainNewsProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const MainNews: React.FC<MainNewsProps> = ({ data, className = '', ...props }) => {
   const SmallArticlesList = () => (
-    <ul className="grid gap-4 content-between">
+    <ul className="grid gap-4 content-between grid-rows-[repeat(4,minmax(0,calc(25%+3rem)))]">
       {data.data.slice(1).map(
         // eslint-disable-next-line
         ({ attributes: { description, ...item } }, index) => (
-          <li key={index} className="h-fit">
+          <li key={index}>
             <ArticleCardSmall data={item} />
           </li>
         )
@@ -22,7 +22,7 @@ const MainNews: React.FC<MainNewsProps> = ({ data, className = '', ...props }) =
 
   return (
     <>
-      <div className={`mt-8 grid gap-6 xl:grid-cols-[55%,40%] justify-evenly ${className}`} {...props}>
+      <div className={`mt-8 grid gap-6 xl:grid-cols-[55%,40%] ${className}`} {...props}>
         <ArticleCardPrimary data={data.data[0].attributes} />
 
         <SmallArticlesList />

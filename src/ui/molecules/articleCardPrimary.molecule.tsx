@@ -1,10 +1,10 @@
-import { Link, LinkProps } from "react-router-dom";
-import { ParsedArticle } from "../../helpers/formatArticleData.helper";
-import ImgSkeleton from "../atoms/skeleton/img.skeleton";
-import { ParagraphSkeleton } from "../atoms/skeleton/paragraph.skeleton";
-import Body from "../atoms/typographies/body.atom";
-import Phrase from "../atoms/typographies/phrase.atom";
-import Title from "../atoms/typographies/title.atom";
+import { Link, LinkProps } from 'react-router-dom';
+import { ParsedArticle } from '../../helpers/formatArticleData.helper';
+import ImgSkeleton from '../atoms/skeleton/img.skeleton';
+import { ParagraphSkeleton } from '../atoms/skeleton/paragraph.skeleton';
+import Body from '../atoms/typographies/body.atom';
+import Phrase from '../atoms/typographies/phrase.atom';
+import Title from '../atoms/typographies/title.atom';
 
 interface ArticleCardPrimaryProps extends Partial<LinkProps>, React.RefAttributes<HTMLAnchorElement> {
   data: ParsedArticle;
@@ -12,13 +12,13 @@ interface ArticleCardPrimaryProps extends Partial<LinkProps>, React.RefAttribute
 
 const ArticleCardPrimary: React.FC<ArticleCardPrimaryProps> = ({ data, ...props }) => {
   return (
-    <Link {...props} to={data.href} className="relative my-0 mx-auto group">
+    <Link {...props} to={data.href} className="relative my-0 mx-auto group w-full">
       <img
         src={data.cover.data?.attributes.formats.large.url}
         alt={data.cover.data?.attributes.formats.large.name}
         className="absolute h-full w-full md:rounded-lg lg:w-10/12 md:right-0 object-cover"
       />
-      <div className="mt-16 mb-32 xl:mb-0 xl:w-9/12 h-fit row-start-2 relative px-4 py-6 bg-body-200 bg-opacity-60 grid gap-4 sm:w-10/12 sm:rounded-tr-lg sm:rounded-br-lg md:p-8 2xl:p-9 lg:rounded-lg">
+      <div className="min-h-[60%] content-center mt-16 mb-32 xl:mb-0 xl:w-9/12 h-fit row-start-2 relative px-4 py-6 bg-body-200 bg-opacity-60 grid gap-4 sm:w-10/12 sm:rounded-tr-lg sm:rounded-br-lg md:p-8 2xl:p-9 lg:rounded-lg">
         <Title color="body-900" weight="font-bold" className="group-hover:text-blueberry-600">
           {data.title}
         </Title>
