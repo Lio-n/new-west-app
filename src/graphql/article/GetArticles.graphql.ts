@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_ARTICLES_WITHOUT_DESCRIPTION = gql`
   query GetArticles($filters: ArticleFiltersInput, $pagination: PaginationArg, $publicationState: PublicationState, $sort: [String] = []) {

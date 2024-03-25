@@ -11,7 +11,7 @@ interface ArticleCardMidProps extends Partial<LinkProps>, React.RefAttributes<HT
 
 const ArticleCardMid: React.FC<ArticleCardMidProps> = ({ data, includesREADMORE = true, ...props }) => {
   return (
-    <Link {...props} to={data.href} className="h-fit grid grid-rows-[70%,30%] group xl:h-full">
+    <Link {...props} to={data.href} className="h-fit grid grid-rows-[minmax(0,15rem)30%] group xl:h-full">
       {data.cover.data?.attributes && <PictureSource sources={data.cover.data?.attributes} className="sm:rounded-lg" />}
 
       <ArticleDetails data={data} className="divide-y-2" includesREADMORE={includesREADMORE} />

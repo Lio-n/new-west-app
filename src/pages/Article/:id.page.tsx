@@ -64,7 +64,7 @@ const ArticleById = () => {
               />
             </>
             <article className="grid gap-4">
-              <BlocksRender content={byIdResponse.data?.article.data.attributes.body} />
+              {byIdResponse.data?.article.data.attributes.body && <BlocksRender content={byIdResponse.data.article.data.attributes.body} />}
             </article>
 
             <div className="divider-solid" />
@@ -122,9 +122,9 @@ const Header: React.FC<HeaderProps> = ({ category, title, publishedAt, readingTi
 const TopStories = ({ articles }: { articles: ParsedArticleEntityResponseCollection }) => (
   <div>
     <Heading className="mb-8">Top Stories</Heading>
-    <ul className="flex gap-4 flex-wrap justify-center">
+    <ul className="grid gap-4 content-between grid-rows-[repeat(4,25%)] md:grid-rows-[repeat(2,50%)] md:grid-cols-[repeat(2,calc(50%-.5rem))]">
       {articles.data.map((item, index) => (
-        <li key={index} className="h-fit sm:max-w-50p-minus-0.5rem">
+        <li key={index} className="">
           <ArticleCardMid data={item.attributes} />
         </li>
       ))}
