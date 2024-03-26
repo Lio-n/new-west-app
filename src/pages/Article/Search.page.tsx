@@ -37,9 +37,9 @@ const SearchArticlePage = () => {
 
   const SearchResults = ({ results }: { results: ArticleEntityResponseCollection }) => {
     return (
-      <ul className="grid gap-4 mb-8">
+      <ul className="grid gap-4 mb-8 auto-rows-[1fr]">
         {formatArticleData(results).data.map((item, index) => (
-          <li key={index} className="w-full">
+          <li key={index} className="w-full sm:max-h-40">
             <ArticleCardSmall data={item.attributes} />
           </li>
         ))}

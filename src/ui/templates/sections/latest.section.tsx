@@ -6,7 +6,7 @@ const LatestSection: React.FC<{ articles: ParsedArticleEntityResponseCollection 
   const MidArticlesList = () => (
     <ul className="flex gap-4 flex-wrap justify-center">
       {articles?.data.map((item, index) => (
-        <li key={index} className="h-fit sm:max-w-45 2xl:max-w-24">
+        <li key={index} className="h-fit w-full sm:w-[45%] 2xl:w-[24%]">
           <ArticleCardMid data={item.attributes} />
         </li>
       ))}
