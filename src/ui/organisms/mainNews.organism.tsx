@@ -7,10 +7,8 @@ interface MainNewsProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const MainNews: React.FC<MainNewsProps> = ({ data, className = '', ...props }) => {
-  const gridRows = `grid gap-4 grid-rows-[repeat(${data?.data.length - 1},minmax(0,calc(25%+3rem)))]`;
-
   const SmallArticlesList = () => (
-    <ul className={gridRows}>
+    <ul className={`grid gap-4 auto-rows-fr md:auto-rows-[10rem] xl:auto-rows-fr`}>
       {data.data.slice(1).map(
         // eslint-disable-next-line
         ({ attributes: { description, ...item } }, index) => (

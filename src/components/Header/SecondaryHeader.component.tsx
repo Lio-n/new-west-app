@@ -8,11 +8,11 @@ import BuildingIcon from '../../ui/atoms/icons/building.icon';
 
 const SocialMediaList = () => {
   const socialMediaInfo = [
-    { icon: <FacebookIcon className="w-4" />, href: '#' },
-    { icon: <TwitterIcon className="w-4" />, href: '#' },
-    { icon: <LinkedinIcon className="w-4" />, href: '#' },
-    { icon: <YoutubeIcon className="w-4" />, href: '#' },
-    { icon: <InstagramIcon className="w-4" />, href: '#' },
+    { icon: <FacebookIcon className="w-4" />, href: '/' },
+    { icon: <TwitterIcon className="w-4" />, href: '/' },
+    { icon: <LinkedinIcon className="w-4" />, href: '/' },
+    { icon: <YoutubeIcon className="w-4" />, href: '/' },
+    { icon: <InstagramIcon className="w-4" />, href: '/' },
   ];
 
   return (

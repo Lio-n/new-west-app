@@ -18,7 +18,7 @@ const MobileHeader = () => {
         isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
       } absolute w-full bg-chinese-blue-400 p-4`}
     >
-      <MenuNavegationLinks direction="vertical" data={[...HeaderInfo.navLinks, { text: 'About Us', href: '/About Us' }]} />
+      <MenuNavegationLinks direction="vertical" data={[...HeaderInfo.navLinks, { text: 'About Us', href: '/about_us' }]} />
     </div>
   );
 
