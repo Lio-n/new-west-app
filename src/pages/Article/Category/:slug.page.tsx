@@ -8,6 +8,7 @@ import { GET_ARTICLES } from '../../../graphql/article/GetArticles.graphql';
 import MustReadSection from '../../../ui/templates/sections/mustRead.section';
 import NavegationSubLevel from '../../../ui/atoms/navegationSubLevel.atom';
 import { sortByValues } from '../../../interfaces/filterOptions.interface';
+import NotContent from '../../../components/NotContent.component';
 
 const ArticleByCategory = () => {
   // Based in the params.category value, the fetching and content should change.
@@ -36,6 +37,15 @@ const ArticleByCategory = () => {
       },
     },
   });
+
+  if (
+    !latestResponse.loading &&
+    !mustReadResponse.loading &&
+    !mustReadResponse.data?.articles.data.length &&
+    !latestResponse.data?.articles.data.length
+  ) {
+    return <NotContent className="py-36 max-w-screen-2xl h-full" />;
+  }
 
   return (
     <div className="py-24 lg:py-36 md:px-4 max-w-screen-2xl m-auto">

@@ -124,7 +124,7 @@ const TopStories = ({ articles }: { articles: ParsedArticleEntityResponseCollect
     <Heading className="mb-8">Top Stories</Heading>
     <ul className="grid gap-4 content-between grid-rows-[repeat(4,25%)] md:grid-rows-[repeat(2,50%)] md:grid-cols-[repeat(2,calc(50%-.5rem))]">
       {articles.data.map((item, index) => (
-        <li key={index} className="">
+        <li key={index}>
           <ArticleCardMid data={item.attributes} />
         </li>
       ))}
