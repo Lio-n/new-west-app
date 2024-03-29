@@ -44,7 +44,7 @@ const ArticleByCategory = () => {
     !mustReadResponse.data?.articles.data.length &&
     !latestResponse.data?.articles.data.length
   ) {
-    return <NotContent className="py-36 max-w-screen-2xl h-full" />;
+    return <NotContent className="py-36 max-w-screen-2xl m-auto h-full" />;
   }
 
   return (

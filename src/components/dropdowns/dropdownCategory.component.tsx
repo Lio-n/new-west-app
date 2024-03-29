@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import ChevronIcon from '../../ui/atoms/icons/chevron.icon';
 import { ArticleCategory } from '../../graphql/types/article.types';
 import Button from '../../ui/atoms/button.atom';
+import useClickOutside from '../../hooks/clickOutside.hook';
 
 interface DropdownCheckboxProps {
   onChange: (value: ArticleCategory) => void;
@@ -24,6 +25,10 @@ const DropdownCheckbox: React.FC<DropdownCheckboxProps> = ({ onChange, defaultVa
   const [checkboxes, setCheckboxes] = useState({ ...defaultCheckboxValues, ...defaultValues });
   const CatgoriesOptions = Object.entries(checkboxes);
 
+  // Toggle menu visibility
+  const { ref, isOpen, setIsOpen } = useClickOutside<HTMLUListElement>(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   useEffect(() => setCheckboxes({ ...defaultCheckboxValues, ...defaultValues }), [defaultValues]);
 
   // Function to handle checkbox changes
@@ -39,7 +44,7 @@ const DropdownCheckbox: React.FC<DropdownCheckboxProps> = ({ onChange, defaultVa
   };
 
   const DropdownMenuList = () => (
-    <ul className="p-3 space-y-1 text-sm bg-chinese-blue-300 rounded-2xl dark:text-gray-200" aria-labelledby="dropdownCheckbox">
+    <ul ref={ref} className="p-3 space-y-1 text-sm bg-chinese-blue-300 rounded-2xl dark:text-gray-200">
       {CatgoriesOptions.map((item, index) => (
         <li key={index}>
           <div className="flex items-center p-2 rounded hover:bg-chinese-blue-100">
@@ -63,9 +68,8 @@ const DropdownCheckbox: React.FC<DropdownCheckboxProps> = ({ onChange, defaultVa
     <div>
       {/* Dropdown checkbox button */}
       <Button
-        id="dropdownCheckbox"
-        data-dropdown-toggle="dropdownBgHover"
         className="text-slate-700 hover:text-slate-500 font-medium text-sm p-2.5 text-center inline-flex items-center"
+        onClick={toggleMenu}
         type="button"
       >
         Categorias
@@ -73,7 +77,7 @@ const DropdownCheckbox: React.FC<DropdownCheckboxProps> = ({ onChange, defaultVa
       </Button>
 
       {/* Dropdown menu with checkboxes */}
-      <div id="dropdownBgHover" className="z-10 hidden w-48 bg-white rounded-lg shadow dark:bg-gray-700">
+      <div className={`absolute z-10 w-48 bg-white rounded-lg shadow dark:bg-gray-700 ${isOpen ? 'block' : 'hidden'}`}>
         <DropdownMenuList />
       </div>
     </div>

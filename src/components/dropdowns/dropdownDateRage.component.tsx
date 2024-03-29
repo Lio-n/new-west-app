@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ChevronIcon from '../../ui/atoms/icons/chevron.icon';
 import Button from '../../ui/atoms/button.atom';
 import { DATE_RANGE } from '../../interfaces/filterOptions.interface';
+import useClickOutside from '../../hooks/clickOutside.hook';
 
 const DATE_RANGE_STRING_MAP: Record<DATE_RANGE, string> = {
   [DATE_RANGE.ALL_TIME]: 'All since 2000',
@@ -23,6 +24,10 @@ const DropdownDateRange: React.FC<DropdownDateRangeProps> = ({ onChange, default
   // State to manage selected sort option
   const [selectedOption, setSelectedOption] = useState<DATE_RANGE>(defaultValues);
 
+  // Toggle menu visibility
+  const { ref, isOpen, setIsOpen } = useClickOutside<HTMLUListElement>(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   // Function to handle sort option selection
   const handleOptionSelect = (option: DATE_RANGE) => {
     if (option !== selectedOption) {
@@ -32,7 +37,7 @@ const DropdownDateRange: React.FC<DropdownDateRangeProps> = ({ onChange, default
   };
 
   const DropdownMenuList = () => (
-    <ul className="py-2 text-sm rounded-2xl bg-chinese-blue-300 dark:text-gray-200" aria-labelledby="dropdownDateRange">
+    <ul ref={ref} className="py-2 text-sm rounded-2xl bg-chinese-blue-300 dark:text-gray-200">
       {sortingOptions.map((option) => (
         <li key={option}>
           <Button
@@ -52,8 +57,7 @@ const DropdownDateRange: React.FC<DropdownDateRangeProps> = ({ onChange, default
     <div>
       {/* Dropdown sort button */}
       <Button
-        id="dropdownDateRange"
-        data-dropdown-toggle="dropdown"
+        onClick={toggleMenu}
         className="text-slate-700 hover:text-slate-500 font-medium text-sm p-2.5 text-center inline-flex items-center"
         type="button"
       >
@@ -62,7 +66,7 @@ const DropdownDateRange: React.FC<DropdownDateRangeProps> = ({ onChange, default
       </Button>
 
       {/* Dropdown menu for sorting options */}
-      <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+      <div className={`absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 ${isOpen ? 'block' : 'hidden'}`}>
         <DropdownMenuList />
       </div>
     </div>

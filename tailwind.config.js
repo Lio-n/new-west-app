@@ -1,45 +1,45 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       maxWidth: {
-        45: "45%",
-        24: "24%",
-        "50p-minus-0.5rem": "calc(50% - .5rem)", // Custom max-width utility
+        45: '45%',
+        24: '24%',
+        '50p-minus-0.5rem': 'calc(50% - .5rem)', // Custom max-width utility
       },
       colors: {
-        "body-200": "#EDEDED",
-        "body-400": "#7A7A7A",
-        "body-500": "rgb(36, 36, 36)",
-        "body-900": "#050315",
-        "chinese-blue-100": "#23205b",
-        "chinese-blue-200": "#1b1948",
-        "chinese-blue-300": "#141335",
-        "chinese-blue-400": "#0d0c22",
-        "chinese-blue-500": "#06050f",
-        "blueberry-600": "#4D1CED",
-        "blueberry-700": "#360FB8",
-        "blueberry-800": "#240A7B",
+        'body-200': '#EDEDED',
+        'body-400': '#7A7A7A',
+        'body-500': 'rgb(36, 36, 36)',
+        'body-900': '#050315',
+        'chinese-blue-100': '#23205b',
+        'chinese-blue-200': '#1b1948',
+        'chinese-blue-300': '#141335',
+        'chinese-blue-400': '#0d0c22',
+        'chinese-blue-500': '#06050f',
+        'blueberry-600': '#4D1CED',
+        'blueberry-700': '#360FB8',
+        'blueberry-800': '#240A7B',
       },
       keyframes: {
         marquee_ms: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(-300%)" },
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-300%)' },
         },
         marquee_md: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(-160%)" },
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-160%)' },
         },
         marquee_lg: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(-100%)" },
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
         },
       },
       animation: {
-        marquee_ms: "marquee_ms 20s linear infinite",
-        marquee_md: "marquee_md 20s linear infinite",
-        marquee_lg: "marquee_lg 10s linear infinite",
+        marquee_ms: 'marquee_ms 20s linear infinite',
+        marquee_md: 'marquee_md 20s linear infinite',
+        marquee_lg: 'marquee_lg 10s linear infinite',
       },
     },
     fontFamily: {},

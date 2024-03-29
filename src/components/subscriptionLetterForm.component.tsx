@@ -18,7 +18,7 @@ const SubscriptionLetterForm: React.FC = () => {
     <form onSubmit={handleForm} className="flex gap-4">
       <Input
         style={{ background: 'url(/email.svg) no-repeat left', backgroundPosition: '1rem' }}
-        className="text-body-500 border-2 border-slate-300 p-[.5rem,3rem] rounded-xl placeholder:text-slate-600 placeholder:font-thin"
+        className="text-body-500 border-2 border-slate-300 pb-[.5rem] pt-[.5rem] pl-[3rem] pr-[3rem] rounded-xl placeholder:text-slate-600 placeholder:font-thin"
         placeholder="Your email"
         name="subscriptionLetter"
       />
