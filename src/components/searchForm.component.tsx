@@ -1,6 +1,6 @@
-import Button from "../ui/atoms/button.atom";
-import MagnifyingGlassIcon from "../ui/atoms/icons/magnifying-glass.icon";
-import Input from "../ui/atoms/input.atom";
+import Button from '../ui/atoms/button.atom';
+import MagnifyingGlassIcon from '../ui/atoms/icons/magnifying-glass.icon';
+import Input from '../ui/atoms/input.atom';
 
 interface SearchFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   onListenQuery: (searchText: string) => void;

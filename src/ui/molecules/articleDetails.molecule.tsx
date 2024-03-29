@@ -2,8 +2,8 @@ import { ParsedArticle } from '../../helpers/formatArticleData.helper';
 import DotIcon from '../atoms/icons/dot.icon';
 import { ParagraphSkeleton } from '../atoms/skeleton/paragraph.skeleton';
 import Body from '../atoms/typographies/body.atom';
+import Heading from '../atoms/typographies/heading.atom';
 import Phrase from '../atoms/typographies/phrase.atom';
-import SubHeading from '../atoms/typographies/subHeading.atom';
 
 export interface ArticleDetailsItem
   extends Partial<Pick<ParsedArticle, 'title' | 'description' | 'formatedDate' | 'formatedDuration' | 'timeSince' | 'category'>> {}
@@ -15,17 +15,15 @@ interface ArticleDetailsProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ArticleDetails: React.FC<ArticleDetailsProps> = ({ data, includesREADMORE = false, className = '', ...props }) => (
   <div className={`size-fit p-4 divide-y-2 divide-transparent ${className}`} {...props}>
-    <div className="flex justify-between items-center w-fit">
-      <Phrase color="body-400" weight="font-semibold">
-        {data.formatedDate}
-      </Phrase>
-      <DotIcon className="mx-2 size-1 bg-body-400" />
-      <Phrase color="body-400">{data.timeSince}</Phrase>
+    <div className="flex justify-between items-center w-fit text-slate-900">
+      <Phrase weight="font-semibold">{data.formatedDate}</Phrase>
+      <DotIcon className="mx-2 size-1 bg-slate-900" />
+      <Phrase>{data.timeSince}</Phrase>
     </div>
     {data.title && (
-      <SubHeading color="body-500" weight="font-bold" className="group-hover:text-blueberry-600 line-clamp-2">
+      <Heading color="body-500" weight="font-bold" className="group-hover:text-blueberry-600 line-clamp-2 !text-3xl sm:!text-2xl">
         {data.title}
-      </SubHeading>
+      </Heading>
     )}
     {data.description && (
       <Body color="body-400" className="line-clamp-2">
