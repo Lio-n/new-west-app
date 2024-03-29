@@ -12,7 +12,7 @@ interface MustReadSectionProps extends React.HTMLAttributes<HTMLDivElement> {
 const MustReadSection: React.FC<MustReadSectionProps> = ({ articles, href, isLoading = true, ...props }) => {
   const SmallArticlesList = ({ smallArticles }: { smallArticles: { attributes: ParsedArticle; id: number }[] }) => {
     return (
-      <ul className={`grid gap-4 md:auto-rows-[10rem]`}>
+      <ul className={`grid gap-4 auto-rows-[22rem] sm:auto-rows-[10rem]`}>
         {smallArticles.map(
           // eslint-disable-next-line
           ({ attributes: { description, ...item } }, index) => (
