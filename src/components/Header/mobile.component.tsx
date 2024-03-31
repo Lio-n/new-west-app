@@ -26,7 +26,7 @@ const MobileHeader = () => {
     <div className="w-full flex justify-between items-center my-0 mx-auto px-6 py-4 md:px-9 text-white">
       <Brand />
       <div className="flex">
-        <NavegationLink className="p-2" to="/article/search">
+        <NavegationLink className="p-2" to="/article/search" aria-label="Navigate to the Search article page">
           <MagnifyingGlassIcon className="w-5 h-5 stroke-[3px]" />
         </NavegationLink>
         <Button aria-label="menu-mobile" onClick={toggleMenu}>

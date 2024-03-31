@@ -6,7 +6,6 @@ export default {
       maxWidth: {
         45: '45%',
         24: '24%',
-        '50p-minus-0.5rem': 'calc(50% - .5rem)', // Custom max-width utility
       },
       colors: {
         'body-200': '#EDEDED',
@@ -17,10 +16,8 @@ export default {
         'chinese-blue-200': '#1b1948',
         'chinese-blue-300': '#141335',
         'chinese-blue-400': '#0d0c22',
-        'chinese-blue-500': '#06050f',
         'blueberry-600': '#4D1CED',
         'blueberry-700': '#360FB8',
-        'blueberry-800': '#240A7B',
       },
       keyframes: {
         marquee_ms: {
@@ -31,23 +28,32 @@ export default {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(-160%)' },
         },
-        marquee_lg: {
-          '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(-100%)' },
-        },
       },
       animation: {
         marquee_ms: 'marquee_ms 20s linear infinite',
         marquee_md: 'marquee_md 20s linear infinite',
-        marquee_lg: 'marquee_lg 10s linear infinite',
       },
     },
     fontFamily: {},
   },
   safelist: [
     {
-      pattern:
-        /(bg|text|border|fill|stroke)-(body-400|body-500|body-900|chinese-blue-100|chinese-blue-200|chinese-blue-300|chinese-blue-400|chinese-blue-500|blueberry-600|blueberry-700|blueberry-800)/,
+      pattern: /(bg)-(body-200)/,
+    },
+    {
+      pattern: /(border)-(body-400)/,
+    },
+    {
+      pattern: /(text|bg)-(body-500)/,
+    },
+    {
+      pattern: /(text)-(body-900)/,
+    },
+    {
+      pattern: /(bg)-(chinese-blue-100|chinese-blue-300|chinese-blue-400)/,
+    },
+    {
+      pattern: /(bg|text|border|stroke)-(blueberry-600|blueberry-700|blueberry-700)/,
     },
   ],
   plugins: [],

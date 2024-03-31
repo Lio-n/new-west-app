@@ -15,9 +15,9 @@ interface ArticleDetailsProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ArticleDetails: React.FC<ArticleDetailsProps> = ({ data, includesREADMORE = false, className = '', ...props }) => (
   <div className={`size-fit p-4 divide-y-2 divide-transparent ${className}`} {...props}>
-    <div className="flex justify-between items-center w-fit text-slate-900">
+    <div className="flex justify-between items-center w-fit">
       <Phrase weight="font-semibold">{data.formatedDate}</Phrase>
-      <DotIcon className="mx-2 size-1 bg-slate-900" />
+      <DotIcon className="mx-2 size-1 bg-body-500" />
       <Phrase>{data.timeSince}</Phrase>
     </div>
     {data.title && (
@@ -26,7 +26,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ data, includesREADMORE 
       </Heading>
     )}
     {data.description && (
-      <Body color="body-400" className="line-clamp-2">
+      <Body color="body-500" className="line-clamp-2">
         {data.description}
         {includesREADMORE && (
           <Phrase weight="font-bold" color="body-900" className="text-md md:text-lg whitespace-nowrap ml-4">
@@ -39,8 +39,8 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ data, includesREADMORE 
       <Phrase color="blueberry-600" weight="font-semibold">
         {data.category}
       </Phrase>
-      <DotIcon className="mx-2 size-1 bg-body-400" />
-      <Phrase color="body-400">Read {data.formatedDuration}</Phrase>
+      <DotIcon className="mx-2 size-1 bg-body-500" />
+      <Phrase color="body-500">Read {data.formatedDuration}</Phrase>
     </div>
   </div>
 );

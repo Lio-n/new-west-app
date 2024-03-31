@@ -10,7 +10,7 @@ interface ArticleCardSmallProps extends Partial<LinkProps>, React.RefAttributes<
 
 const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, className = '', ...props }) => {
   return (
-    <Link {...props} to={data.href} className={`h-full w-full grid sm:grid-cols-[30%,70%] group ${className}`}>
+    <Link {...props} to={data.href} className={`h-full w-full grid grid-rows-[60%,40%] sm:grid-rows-1 sm:grid-cols-[30%,70%] group ${className}`}>
       {data.cover.data?.attributes && (
         <PictureSource sources={data.cover.data?.attributes} className="sm:rounded-tr-lg sm:rounded-br-lg md:rounded-lg" />
       )}

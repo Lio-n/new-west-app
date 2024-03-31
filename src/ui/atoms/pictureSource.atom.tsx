@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { UploadFile } from '../../graphql/types/uploadFile.types';
 
 interface PictureSourceProps extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
@@ -20,11 +20,14 @@ const PictureSource: React.FC<PictureSourceProps> = ({ sources, className = '', 
     });
   };
 
-  const observer = new IntersectionObserver(handleIntersection, {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1, // Adjust as needed
-  });
+  const observer = useMemo(() => {
+    return new IntersectionObserver(handleIntersection, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1, // Adjust as needed
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (imgRef.current) {
