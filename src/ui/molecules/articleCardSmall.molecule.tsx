@@ -12,7 +12,11 @@ const ArticleCardSmall: React.FC<ArticleCardSmallProps> = ({ data, className = '
   return (
     <Link {...props} to={data.href} className={`h-full w-full grid grid-rows-[60%,40%] sm:grid-rows-1 sm:grid-cols-[30%,70%] group ${className}`}>
       {data.cover.data?.attributes && (
-        <PictureSource sources={data.cover.data?.attributes} className="sm:rounded-tr-lg sm:rounded-br-lg md:rounded-lg" />
+        <PictureSource
+          sourceUsage={{ thumbnail: true, small: true }}
+          sources={data.cover.data?.attributes}
+          className="sm:rounded-tr-lg sm:rounded-br-lg md:rounded-lg"
+        />
       )}
 
       <ArticleDetails className="grid items-center sm:h-full md:px-6 xl:pr-0 xl:py-0" data={data} />

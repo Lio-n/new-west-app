@@ -51,6 +51,7 @@ const ArticleById = () => {
               {byIdResponse.data.article.data.attributes.cover.data && (
                 <div className="full-bleed drop-shadow-xl">
                   <PictureSource
+                    sourceUsage={{ thumbnail: true, small: true, medium: true, large: true }}
                     sources={byIdResponse.data.article.data.attributes.cover.data.attributes}
                     className="md:rounded-lg max-h-96 min-h-60"
                   />

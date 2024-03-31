@@ -11,7 +11,7 @@ interface HomeSectionProps {
 
 const HomeSection: React.FC<HomeSectionProps> = ({ articles, trikerInfo, isLoading }) => {
   return (
-    <div className="max-w-screen-2xl md:pb-40 sm:mx-auto my-0">
+    <div className="max-w-screen-2xl mb-12 sm:mx-auto my-0">
       {trikerInfo?.length && <NewsTicker data={trikerInfo} />}
 
       {isLoading && <MainNewsSkeleton />}

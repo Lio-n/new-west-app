@@ -18,7 +18,13 @@ import { UploadFile } from '../graphql/types/uploadFile.types';
 
 const CustomBlocks: Partial<BlocksComponents> = {
   image: ({ image }: GetPropsFromNode<ImageBlockNode>) => {
-    return <PictureSource sources={image as unknown as UploadFile} className="max-h-96 rounded-lg aspect-video" />;
+    return (
+      <PictureSource
+        sourceUsage={{ thumbnail: true, small: true, medium: true }}
+        sources={image as unknown as UploadFile}
+        className="max-h-96 rounded-lg aspect-video"
+      />
+    );
   },
   paragraph: (value: GetPropsFromNode<ParagraphBlockNode>) => <Body>{value.children}</Body>,
   quote: (value: GetPropsFromNode<QuoteBlockNode>) => <Blockquote weight="font-semibold">{value.children}</Blockquote>,

@@ -3,10 +3,16 @@ import { UploadFile } from '../../graphql/types/uploadFile.types';
 
 interface PictureSourceProps extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
   sources: UploadFile;
+  sourceUsage?: Partial<{
+    thumbnail: boolean;
+    small: boolean;
+    medium: boolean;
+    large: boolean;
+  }>;
   className?: string;
 }
 
-const PictureSource: React.FC<PictureSourceProps> = ({ sources, className = '', ...props }) => {
+const PictureSource: React.FC<PictureSourceProps> = ({ sources, sourceUsage, className = '', ...props }) => {
   const [isVisible, setIsVisible] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -37,17 +43,24 @@ const PictureSource: React.FC<PictureSourceProps> = ({ sources, className = '', 
     return () => observer.disconnect();
   }, [imgRef, observer]);
 
+  const { thumbnail, small, medium, large } = sources.formats;
+
   return (
-    <img
-      {...props}
-      ref={imgRef}
-      srcSet={isVisible ? `${sources.formats.small.url} 799w, ${sources.formats.medium.url} 1199w, ${sources.formats.large.url} 1200w` : ''}
-      sizes={isVisible ? '(max-width: 799px) 100vw, (min-width: 800px) and (max-width: 1199px) 50vw, 25vw' : ''}
-      src={isVisible ? sources.formats.thumbnail.url : ''}
-      alt={sources.formats.thumbnail.name}
-      className={`size-full object-cover ${className}`}
-      loading="lazy"
-    />
+    <picture {...props}>
+      <>
+        {sourceUsage?.thumbnail && thumbnail && <source srcSet={thumbnail.url} media="(max-width: 350px)" />}
+        {sourceUsage?.small && small && <source srcSet={small.url} media="(min-width: 351px) and (max-width: 799px)" />}
+        {sourceUsage?.medium && medium && <source srcSet={medium.url} media="(min-width: 800px) and (max-width: 1199px)" />}
+        {sourceUsage?.large && large && <source srcSet={large.url} media="(min-width: 1200px)" />}
+      </>
+      <img
+        ref={imgRef}
+        src={isVisible ? sources.formats.thumbnail.url : ''}
+        alt={sources.formats.thumbnail.name}
+        className={`size-full object-cover ${className}`}
+        loading="lazy"
+      />
+    </picture>
   );
 };
 
