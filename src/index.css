@@ -5,9 +5,9 @@
 @layer components {
   .divider-solid {
     border-width: 1px;
-    border-color: theme("colors.slate.200");
-    margin-top: theme("spacing.8");
-    margin-bottom: theme("spacing.8");
+    border-color: theme('colors.slate.200');
+    margin-top: theme('spacing.8');
+    margin-bottom: theme('spacing.8');
   }
 }
 
