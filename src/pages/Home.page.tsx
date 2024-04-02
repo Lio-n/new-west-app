@@ -52,13 +52,9 @@ const HomePage = () => {
     <div className="py-32 lg:py-36 md:px-4">
       <HomeSection articles={formattedRelevantArticles} trikerInfo={newsTrikerInfo} isLoading={relevanteResponse.loading} />
 
-      {!latestResponse.loading && latestResponse.data?.articles.data.length && (
-        <LatestSection articles={formattedLatestArticles} isLoading={latestResponse.loading} />
-      )}
+      <LatestSection articles={formattedLatestArticles} isLoading={latestResponse.loading} />
 
-      {!mustReadResponse.loading && mustReadResponse.data?.articles.data.length && (
-        <MustReadSection articles={formattedMustReadArticles} href={'/article/search?sort=Relevance'} isLoading={mustReadResponse.loading} />
-      )}
+      <MustReadSection articles={formattedMustReadArticles} isLoading={mustReadResponse.loading} />
     </div>
   );
 };

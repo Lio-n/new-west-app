@@ -15,7 +15,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({ articles, trikerInfo, isLoadi
       {trikerInfo?.length && <NewsTicker data={trikerInfo} />}
 
       {isLoading && <MainNewsSkeleton />}
-      {!isLoading && articles?.data.length && <MainNews data={articles} />}
+      {!isLoading && articles?.data.length && <MainNews data={articles.data} />}
     </div>
   );
 };

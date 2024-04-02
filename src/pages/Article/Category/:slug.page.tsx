@@ -47,6 +47,9 @@ const ArticleByCategory = () => {
     return <NotContent className="py-36 max-w-screen-2xl m-auto h-full" />;
   }
 
+  const formattedLatestArticles = latestResponse.data?.articles && formatArticleData(latestResponse.data?.articles);
+  const formattedMustReadArticles = mustReadResponse.data?.articles && formatArticleData(mustReadResponse.data?.articles);
+
   return (
     <div className="py-24 lg:py-36 md:px-4 max-w-screen-2xl m-auto">
       <NavegationSubLevel
@@ -64,10 +67,10 @@ const ArticleByCategory = () => {
 
       <div>
         {latestResponse.loading && <MainNewsSkeleton />}
-        {latestResponse.data?.articles.data.length && <MainNews data={formatArticleData(latestResponse.data?.articles)} />}
+        {formattedLatestArticles?.data.length && <MainNews data={formattedLatestArticles.data} />}
 
         <MustReadSection
-          articles={mustReadResponse.data?.articles.data && formatArticleData(mustReadResponse.data?.articles)}
+          articles={formattedMustReadArticles?.data && formattedMustReadArticles}
           href={`/article/search?sort=Relevance&category=${params.slug}`}
           isLoading={mustReadResponse.loading}
         />

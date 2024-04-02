@@ -9,13 +9,11 @@ interface FormInputs extends EventTarget {
   searchText: { value: string };
 }
 
-const SearchForm: React.FC<SearchFormProps> = ({ onListenQuery, ...props }) => {
+const SearchForm: React.FC<SearchFormProps> = ({ onListenQuery, defaultValue = '', ...props }) => {
   const handleForm: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     const target = e.target as FormInputs;
-
-    if (!target.searchText.value) return;
 
     onListenQuery(target.searchText.value);
   };
@@ -25,6 +23,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onListenQuery, ...props }) => {
       <Input
         className="text-slate-950 font-semibold placeholder:italic placeholder:text-slate-600 placeholder:font-thin"
         placeholder="Search The New West"
+        defaultValue={defaultValue}
         name="searchText"
       />
       <Button>

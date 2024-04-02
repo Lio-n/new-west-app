@@ -1,7 +1,7 @@
-import { Article, ArticleEntityResponseCollection } from "../graphql/types/article.types";
-import formatDate from "../lib/formatDate.lib";
-import formatDuration from "../lib/formatDuration.lib";
-import timeSince from "../lib/timeSince.lib";
+import { Article, ArticleEntity, ArticleEntityResponseCollection } from '../graphql/types/article.types';
+import formatDate from '../lib/formatDate.lib';
+import formatDuration from '../lib/formatDuration.lib';
+import timeSince from '../lib/timeSince.lib';
 
 export interface ParsedArticle extends Article {
   formatedDate: string;
@@ -10,7 +10,11 @@ export interface ParsedArticle extends Article {
   href: string;
 }
 
-export interface ParsedArticleEntityResponseCollection extends Omit<ArticleEntityResponseCollection, "data"> {
+export interface ParsedArticleEntity extends Pick<ArticleEntity, 'id'> {
+  attributes: ParsedArticle;
+}
+
+export interface ParsedArticleEntityResponseCollection extends Omit<ArticleEntityResponseCollection, 'data'> {
   data: {
     attributes: ParsedArticle;
     id: number;

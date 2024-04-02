@@ -1,26 +1,15 @@
-import { ParsedArticleEntityResponseCollection } from '../../helpers/formatArticleData.helper';
+import { ParsedArticleEntity } from '../../helpers/formatArticleData.helper';
 import ArticleCardPrimary, { ArticleCardPrimarySkeleton } from '../molecules/articleCardPrimary.molecule';
-import ArticleCardSmall, { ArticleCardSmallSkeleton } from '../molecules/articleCardSmall.molecule';
+import SmallArticlesList, { SmallArticlesListSkeleton } from './smallArticlesList.organism';
+
+const sharedStyles = 'grid gap-4 sm:auto-rows-[10rem] xl:auto-rows-fr';
 
 interface MainNewsProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: ParsedArticleEntityResponseCollection;
+  data: ParsedArticleEntity[];
 }
 
 const MainNews: React.FC<MainNewsProps> = ({ data, className = '', ...props }) => {
-  const SmallArticlesList = () => (
-    <ul className={`grid gap-4 auto-rows-[22rem] sm:auto-rows-[10rem] xl:auto-rows-fr`}>
-      {data.data.slice(1).map(
-        // eslint-disable-next-line
-        ({ attributes: { description, ...item } }, index) => (
-          <li key={index}>
-            <ArticleCardSmall data={item} />
-          </li>
-        )
-      )}
-    </ul>
-  );
-
-  const includesSmallArticles: boolean = data?.data.length > 2;
+  const includesSmallArticles: boolean = data?.length > 2;
 
   return (
     <>
@@ -28,29 +17,21 @@ const MainNews: React.FC<MainNewsProps> = ({ data, className = '', ...props }) =
         className={`min-h-96 mt-8 grid gap-6 ${!includesSmallArticles ? '' : 'xl:grid-cols-[55%,40%]'}  xl:justify-evenly ${className}`}
         {...props}
       >
-        <ArticleCardPrimary data={data.data[0].attributes} />
+        <ArticleCardPrimary data={data[0].attributes} />
 
-        {includesSmallArticles && <SmallArticlesList />}
+        {includesSmallArticles && <SmallArticlesList articles={data.slice(1)} className={`${sharedStyles} auto-rows-[22rem]`} />}
       </div>
     </>
   );
 };
 
 const MainNewsSkeleton = () => {
-  const SmallArticlesList = () => (
-    <ul className="grid gap-4">
-      {[1, 2, 3, 4].map((index) => (
-        <li key={index} children={<ArticleCardSmallSkeleton />} />
-      ))}
-    </ul>
-  );
-
   return (
     <>
-      <div className={`mt-8 grid gap-6 xl:grid-cols-[55%,40%]`}>
+      <div className={`min-h-96 mt-8 grid gap-6 xl:grid-cols-[55%,40%] xl:justify-evenly`}>
         <ArticleCardPrimarySkeleton />
 
-        <SmallArticlesList />
+        <SmallArticlesListSkeleton className={sharedStyles} />
       </div>
     </>
   );

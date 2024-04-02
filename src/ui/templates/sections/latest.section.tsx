@@ -1,32 +1,23 @@
 import HeadingSection from '../../molecules/headingSection.molecule';
-import ArticleCardMid, { ArticleCardMidSkeleton } from '../../molecules/articleCardMid.molecule';
 import { ParsedArticleEntityResponseCollection } from '../../../helpers/formatArticleData.helper';
+import MidArticlesList, { MidArticlesListSkeleton } from '../../organisms/medArticlesList.organism';
 
-const LatestSection: React.FC<{ articles: ParsedArticleEntityResponseCollection | undefined; isLoading: boolean }> = ({ articles, isLoading }) => {
-  const MidArticlesList = () => (
-    <ul className="flex gap-4 flex-wrap justify-center">
-      {articles?.data.map((item, index) => (
-        <li key={index} className="h-fit w-full sm:w-[45%] 2xl:w-[24%]">
-          <ArticleCardMid data={item.attributes} />
-        </li>
-      ))}
-    </ul>
-  );
+const sharedStyles = 'flex gap-4 flex-wrap justify-center [&>li]:h-fit [&>li]:w-full [&>li]:sm:w-[45%] [&>li]:2xl:w-[24%]';
 
-  const MidArticlesListSkeleton = () => (
-    <ul className="flex gap-4 flex-wrap justify-center">
-      {[1, 2, 3, 4].map((index) => (
-        <li key={index} className="w-full sm:max-w-45 2xl:max-w-24" children={<ArticleCardMidSkeleton />} />
-      ))}
-    </ul>
-  );
+interface LatestSectionProps extends React.HTMLAttributes<HTMLDivElement> {
+  articles: ParsedArticleEntityResponseCollection | undefined;
+  isLoading: boolean;
+}
 
+const LatestSection: React.FC<LatestSectionProps> = ({ articles, isLoading }) => {
   return (
     <div className="my-8 mx-auto max-w-screen-2xl">
-      <HeadingSection title={'Latest news'} href={'/article/search/?sort=Newest&dateRange=ALL_TIME'} className="px-4 mb-8" />
+      {articles?.data.length && articles?.data.length > 2 && (
+        <HeadingSection title={'Latest news'} href={'/article/search/?sort=Newest&dateRange=ALL_TIME'} className="px-4 mb-8" />
+      )}
 
-      {isLoading && <MidArticlesListSkeleton />}
-      {!isLoading && articles?.data.length && <MidArticlesList />}
+      {isLoading && <MidArticlesListSkeleton className={sharedStyles} />}
+      {!isLoading && articles?.data.length && <MidArticlesList articles={articles.data} className={sharedStyles} />}
     </div>
   );
 };

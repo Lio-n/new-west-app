@@ -10,6 +10,7 @@ import { DATE_RANGE, SORT_BY, sortByValues } from '../interfaces/filterOptions.i
 
 interface FiltersDropdownProps {
   listenQuery: (newQuery: Query['articles']) => void;
+  prevQueryState: Query['articles'] | undefined;
 }
 type DefaultDropdown = {
   checkboxValues: Partial<ArticleCategory>;
@@ -17,48 +18,68 @@ type DefaultDropdown = {
   dateRangeValues: DATE_RANGE;
 };
 
-const FiltersDropdown: React.FC<FiltersDropdownProps> = ({ listenQuery }) => {
+const proccessInitParamQuery = (searchParams: URLSearchParams | undefined) => {
+  const initParams = {
+    query: 'a',
+    sortParam: SORT_BY.NEWEST,
+    categoryParam: [''],
+    dateRangeParam: DATE_RANGE.ALL_TIME,
+    defaultCheckboxValues: { World: true },
+  };
+
+  if (!searchParams) return initParams;
+
+  const qParam = searchParams.get('q') || '';
+  const dateRangeParam = (searchParams.get('dateRange') as DATE_RANGE) || DATE_RANGE.ALL_TIME;
+
+  let sortParam = (searchParams.get('sort')?.toLowerCase() as SORT_BY) || SORT_BY.NEWEST;
+  sortParam = (sortParam.toUpperCase()[0] + sortParam.slice(1)) as SORT_BY;
+
+  let categoryParam = searchParams.get('category')?.split(',') || [];
+
+  if (!categoryParam.length || !categoryParam[0]) {
+    categoryParam = Object.keys(ENUM_ARTICLE_CATEGORY).filter((key) => isNaN(Number(key)));
+  }
+
+  const defaultCheckboxValues: {
+    [key: string]: boolean;
+  } = {};
+
+  categoryParam.forEach((item) => {
+    defaultCheckboxValues[item] = true;
+  });
+
+  return { query: qParam, categoryParam, sortParam, dateRangeParam, defaultCheckboxValues };
+};
+
+const FiltersDropdown: React.FC<FiltersDropdownProps> = ({ listenQuery, prevQueryState }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [defaultDropdown, setDefaultDropdown] = useState<DefaultDropdown>();
 
   useEffect(() => {
-    const qParam = searchParams.get('q') || '';
-    const dateRangeParam = (searchParams.get('dateRange') as DATE_RANGE) || DATE_RANGE.ALL_TIME;
+    const initParams = proccessInitParamQuery(searchParams);
 
-    let sortParam = (searchParams.get('sort')?.toLowerCase() as SORT_BY) || SORT_BY.NEWEST;
-    sortParam = (sortParam.toUpperCase()[0] + sortParam.slice(1)) as SORT_BY;
-
-    let categoryParam = searchParams.get('category')?.split(',') || [];
-
-    if (!categoryParam.length || !categoryParam[0]) {
-      categoryParam = Object.keys(ENUM_ARTICLE_CATEGORY).filter((key) => isNaN(Number(key)));
-    }
-
-    const defaultCheckboxValues: {
-      [key: string]: boolean;
-    } = {};
-
-    categoryParam.forEach((item) => {
-      defaultCheckboxValues[item] = true;
+    setDefaultDropdown({
+      sortByValues: initParams.sortParam,
+      dateRangeValues: initParams.dateRangeParam,
+      checkboxValues: initParams.defaultCheckboxValues,
     });
-
-    setDefaultDropdown({ sortByValues: sortParam, dateRangeValues: dateRangeParam, checkboxValues: defaultCheckboxValues });
     setSearchParams({
       ...searchParams,
-      category: categoryParam.join(','),
-      sort: sortParam,
-      dateRange: dateRangeParam,
-      q: qParam,
+      category: initParams.categoryParam.join(','),
+      sort: initParams.sortParam,
+      dateRange: initParams.dateRangeParam,
+      q: initParams.query,
     } as unknown as URLSearchParams);
 
     listenQuery({
       pagination: { pageSize: 4, page: 1 },
-      sort: [sortByValues[sortParam]],
+      sort: [sortByValues[initParams.sortParam]],
       filters: {
         category: {
-          in: categoryParam,
+          in: initParams.categoryParam,
         },
-        title: { contains: qParam },
+        title: { contains: initParams.query },
       },
     });
 
@@ -74,7 +95,9 @@ const FiltersDropdown: React.FC<FiltersDropdownProps> = ({ listenQuery }) => {
     setSearchParams(searchParams);
 
     listenQuery({
+      ...prevQueryState,
       filters: {
+        ...prevQueryState?.filters,
         category: {
           in: filterCategories,
         },
