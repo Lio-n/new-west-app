@@ -49,8 +49,12 @@ const PictureSource: React.FC<PictureSourceProps> = ({ sources, sourceUsage, cla
     <picture {...props}>
       <>
         {sourceUsage?.thumbnail && thumbnail && <source srcSet={thumbnail.url} media="(max-width: 350px)" />}
-        {sourceUsage?.small && small && <source srcSet={small.url} media="(min-width: 351px) and (max-width: 799px)" />}
-        {sourceUsage?.medium && medium && <source srcSet={medium.url} media="(min-width: 800px) and (max-width: 1199px)" />}
+        {sourceUsage?.small && small && (
+          <source srcSet={small.url} media={`${sourceUsage?.medium ? '(min-width: 351px) and (max-width: 799px)' : '(min-width: 351px)'}`} />
+        )}
+        {sourceUsage?.medium && medium && (
+          <source srcSet={medium.url} media={`${sourceUsage?.large ? '(min-width: 800px) and (max-width: 1199px)' : '(min-width: 800px)'}`} />
+        )}
         {sourceUsage?.large && large && <source srcSet={large.url} media="(min-width: 1200px)" />}
       </>
       <img
